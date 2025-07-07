@@ -71,8 +71,7 @@
             "show": {
               "startInputType": "formInput"
             },
-            "array": [
-              {
+            "array": [              {
                 "label": "Type",
                 "name": "type",
                 "type": "options",
