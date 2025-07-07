@@ -1,0 +1,634 @@
+{
+  "nodes": [
+    {
+      "id": "startAgentflow_0",
+      "type": "agentFlow",
+      "position": {
+        "x": 8.3896232721886,
+        "y": 84.49257220754004
+      },
+      "data": {
+        "id": "startAgentflow_0",
+        "label": "Start",
+        "version": 1,
+        "name": "startAgentflow",
+        "type": "Start",
+        "color": "#7EE787",
+        "hideInput": true,
+        "baseClasses": [
+          "Start"
+        ],
+        "category": "Agent Flows",
+        "description": "Starting point of the agentflow",
+        "inputParams": [
+          {
+            "label": "Input Type",
+            "name": "startInputType",
+            "type": "options",
+            "options": [
+              {
+                "label": "Chat Input",
+                "name": "chatInput",
+                "description": "Start the conversation with chat input"
+              },
+              {
+                "label": "Form Input",
+                "name": "formInput",
+                "description": "Start the workflow with form inputs"
+              }
+            ],
+            "default": "chatInput",
+            "id": "startAgentflow_0-input-startInputType-options",
+            "display": true
+          },
+          {
+            "label": "Form Title",
+            "name": "formTitle",
+            "type": "string",
+            "placeholder": "Please Fill Out The Form",
+            "show": {
+              "startInputType": "formInput"
+            },
+            "id": "startAgentflow_0-input-formTitle-string",
+            "display": false
+          },
+          {
+            "label": "Form Description",
+            "name": "formDescription",
+            "type": "string",
+            "placeholder": "Complete all fields below to continue",
+            "show": {
+              "startInputType": "formInput"
+            },
+            "id": "startAgentflow_0-input-formDescription-string",
+            "display": false
+          },
+          {
+            "label": "Form Input Types",
+            "name": "formInputTypes",
+            "description": "Specify the type of form input",
+            "type": "array",
+            "show": {
+              "startInputType": "formInput"
+            },
+            "array": [
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Options",
+                    "name": "options"
+                  }
+                ],
+                "default": "string"
+              },
+              {
+                "label": "Label",
+                "name": "label",
+                "type": "string",
+                "placeholder": "Label for the input"
+              },
+              {
+                "label": "Variable Name",
+                "name": "name",
+                "type": "string",
+                "placeholder": "Variable name for the input (must be camel case)",
+                "description": "Variable name must be camel case. For example: firstName, lastName, etc."
+              },
+              {
+                "label": "Add Options",
+                "name": "addOptions",
+                "type": "array",
+                "show": {
+                  "formInputTypes[$index].type": "options"
+                },
+                "array": [
+                  {
+                    "label": "Option",
+                    "name": "option",
+                    "type": "string"
+                  }
+                ]
+              }
+            ],
+            "id": "startAgentflow_0-input-formInputTypes-array",
+            "display": false
+          },
+          {
+            "label": "Ephemeral Memory",
+            "name": "startEphemeralMemory",
+            "type": "boolean",
+            "description": "Start fresh for every execution without past chat history",
+            "optional": true,
+            "id": "startAgentflow_0-input-startEphemeralMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Flow State",
+            "name": "startState",
+            "description": "Runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string",
+                "placeholder": "Foo"
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "placeholder": "Bar",
+                "optional": true
+              }
+            ],
+            "id": "startAgentflow_0-input-startState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "startInputType": "chatInput",
+          "formTitle": "",
+          "formDescription": "",
+          "formInputTypes": "",
+          "startEphemeralMemory": "",
+          "startState": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "startAgentflow_0-output-startAgentflow",
+            "label": "Start",
+            "name": "startAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "width": 103,
+      "height": 65,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 8.3896232721886,
+        "y": 84.49257220754004
+      },
+      "dragging": false
+    },
+    {
+      "id": "directReplyAgentflow_0",
+      "position": {
+        "x": 614.9756283938873,
+        "y": 63.88422557797688
+      },
+      "data": {
+        "id": "directReplyAgentflow_0",
+        "label": "Direct Reply 0",
+        "version": 1,
+        "name": "directReplyAgentflow",
+        "type": "DirectReply",
+        "color": "#4DDBBB",
+        "hideOutput": true,
+        "baseClasses": [
+          "DirectReply"
+        ],
+        "category": "Agent Flows",
+        "description": "Directly reply to the user with a message",
+        "inputParams": [
+          {
+            "label": "Message",
+            "name": "directReplyMessage",
+            "type": "string",
+            "rows": 4,
+            "acceptVariable": true,
+            "id": "directReplyAgentflow_0-input-directReplyMessage-string",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "directReplyMessage": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"agentAgentflow_1\" data-label=\"agentAgentflow_1\">{{ agentAgentflow_1 }}</span> </p>"
+        },
+        "outputAnchors": [],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 162,
+      "height": 65,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 614.9756283938873,
+        "y": 63.88422557797688
+      },
+      "dragging": false
+    },
+    {
+      "id": "agentAgentflow_1",
+      "position": {
+        "x": 256.1429481354182,
+        "y": 54.40180318579857
+      },
+      "data": {
+        "id": "agentAgentflow_1",
+        "label": "Retention Agent",
+        "version": 1,
+        "name": "agentAgentflow",
+        "type": "Agent",
+        "color": "#4DD0E1",
+        "baseClasses": [
+          "Agent"
+        ],
+        "category": "Agent Flows",
+        "description": "Dynamically choose and utilize tools during runtime, enabling multi-step reasoning",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "agentModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "agentAgentflow_1-input-agentModel-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Messages",
+            "name": "agentMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "agentAgentflow_1-input-agentMessages-array",
+            "display": true
+          },
+          {
+            "label": "Tools",
+            "name": "agentTools",
+            "type": "array",
+            "optional": true,
+            "array": [
+              {
+                "label": "Tool",
+                "name": "agentSelectedTool",
+                "type": "asyncOptions",
+                "loadMethod": "listTools",
+                "loadConfig": true
+              },
+              {
+                "label": "Require Human Input",
+                "name": "agentSelectedToolRequiresHumanInput",
+                "type": "boolean",
+                "optional": true
+              }
+            ],
+            "id": "agentAgentflow_1-input-agentTools-array",
+            "display": true
+          },
+          {
+            "label": "Knowledge (Document Stores)",
+            "name": "agentKnowledgeDocumentStores",
+            "type": "array",
+            "description": "Give your agent context about different document sources. Document stores must be upserted in advance.",
+            "array": [
+              {
+                "label": "Document Store",
+                "name": "documentStore",
+                "type": "asyncOptions",
+                "loadMethod": "listStores"
+              },
+              {
+                "label": "Describe Knowledge",
+                "name": "docStoreDescription",
+                "type": "string",
+                "generateDocStoreDescription": true,
+                "placeholder": "Describe what the knowledge base is about, this is useful for the AI to know when and how to search for correct information",
+                "rows": 4
+              },
+              {
+                "label": "Return Source Documents",
+                "name": "returnSourceDocuments",
+                "type": "boolean",
+                "optional": true
+              }
+            ],
+            "optional": true,
+            "id": "agentAgentflow_1-input-agentKnowledgeDocumentStores-array",
+            "display": true
+          },
+          {
+            "label": "Knowledge (Vector Embeddings)",
+            "name": "agentKnowledgeVSEmbeddings",
+            "type": "array",
+            "description": "Give your agent context about different document sources from existing vector stores and embeddings",
+            "array": [
+              {
+                "label": "Vector Store",
+                "name": "vectorStore",
+                "type": "asyncOptions",
+                "loadMethod": "listVectorStores",
+                "loadConfig": true
+              },
+              {
+                "label": "Embedding Model",
+                "name": "embeddingModel",
+                "type": "asyncOptions",
+                "loadMethod": "listEmbeddings",
+                "loadConfig": true
+              },
+              {
+                "label": "Knowledge Name",
+                "name": "knowledgeName",
+                "type": "string",
+                "placeholder": "A short name for the knowledge base, this is useful for the AI to know when and how to search for correct information"
+              },
+              {
+                "label": "Describe Knowledge",
+                "name": "knowledgeDescription",
+                "type": "string",
+                "placeholder": "Describe what the knowledge base is about, this is useful for the AI to know when and how to search for correct information",
+                "rows": 4
+              },
+              {
+                "label": "Return Source Documents",
+                "name": "returnSourceDocuments",
+                "type": "boolean",
+                "optional": true
+              }
+            ],
+            "optional": true,
+            "id": "agentAgentflow_1-input-agentKnowledgeVSEmbeddings-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "agentEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "agentAgentflow_1-input-agentEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "agentMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "agentEnableMemory": true
+            },
+            "id": "agentAgentflow_1-input-agentMemoryType-options",
+            "display": true
+          },
+          {
+            "label": "Window Size",
+            "name": "agentMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "agentMemoryType": "windowSize"
+            },
+            "id": "agentAgentflow_1-input-agentMemoryWindowSize-number",
+            "display": true
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "agentMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "agentMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "agentAgentflow_1-input-agentMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "agentUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "agentEnableMemory": true
+            },
+            "id": "agentAgentflow_1-input-agentUserMessage-string",
+            "display": true
+          },
+          {
+            "label": "Return Response As",
+            "name": "agentReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "agentAgentflow_1-input-agentReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "agentUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "agentAgentflow_1-input-agentUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "agentModel": "chatGoogleGenerativeAI",
+          "agentMessages": [
+            {
+              "role": "system",
+              "content": "Assist students in finding individuals who love karaoke from the Singapore Karaoke Students database, acting as a professional customer service representative.\n\nYour primary role is to serve as a professional customer service agent, helping students locate other students from a hypothetical \"Singapore Karaoke Students\" document store who match their specified preferences for karaoke. Your responses must be polite, helpful, and clearly structured.\n\n# Steps\n\n1.  **Understand the User's Requirements:** Carefully analyze the student's request to identify all relevant criteria, such as preferred music genres (pop, rock, ballads, etc.), availability (weekdays, weekends, evenings), age range, specific interests related to karaoke (e.g., duets, group singing, specific artists), or any other stated preferences.\n2.  **Simulate Database Search:** Based on the identified requirements, simulate querying a comprehensive \"Singapore Karaoke Students\" database. For the purpose of this task, you will generate plausible student profiles that fit the criteria, assuming they exist within this hypothetical database. If no specific criteria are given beyond \"love karaoke,\" assume a general search for any karaoke enthusiasts.\n3.  **Identify Matching Profiles:** From the simulated search results, pinpoint individuals who precisely match all specified criteria.\n4.  **Formulate Professional Customer Service Response:**\n    *   Start with a polite greeting.\n    *   Acknowledge the user's request.\n    *   Explain the process (you've checked the database).\n    *   Present the findings clearly and concisely.\n    *   If matches are found, provide details about each matching student, focusing on their karaoke interests and any other relevant shared preferences.\n    *   If no matches are found, politely explain that no one fitting all criteria could be located at this time.\n    *   End with a professional closing, offering further assistance.\n\n# Output Format\n\nThe output must be a professional, polite, and conversational customer service response. It should be in natural language, not code blocks or JSON, but may contain structured lists of information about matching students.\n\n*   **Tone:** Professional, helpful, empathetic.\n*   **Length:** Concise, yet comprehensive enough to address the user's query fully.\n*   **Structure:**\n    *   Greeting (e.g., \"Hello!\", \"Hi there!\")\n    *   Acknowledgement of request.\n    *   Brief explanation of findings.\n    *   Clear presentation of matching students (if any), including their name (hypothetical), preferred karaoke genres/styles, and any other relevant details that match the user's request.\n    *   Polite closing.\n\n# Examples\n\n---\nUser Input: I'm looking for someone who loves pop songs and is available on weekends for karaoke sessions.\n\nModel Internal Reasoning:\n1. Identify key search criteria: \"loves pop songs,\" \"available on weekends.\"\n2. Simulate searching the 'Singapore Karaoke Students' document store for profiles matching these criteria.\n3. Determine if any profiles meet all specified requirements. Example plausible profiles:\n    *   Name: Emily Tan, loves pop, available Saturdays.\n    *   Name: Marcus Lee, loves pop and R&B, available Sundays.\n\nOutput:\nHello! I understand you're looking for a karaoke buddy who enjoys pop songs and is free on weekends. I've checked our Singapore Karaoke Students database for you, and I found a couple of great matches:\n\n*   **Emily Tan:** Emily is a big fan of pop music and is typically available for karaoke sessions on Saturdays.\n*   **Marcus Lee:** Marcus also loves pop songs, especially pop and R&B, and is usually free on Sundays.\n\nI hope this helps you find a fantastic karaoke partner! Please let me know if you need any further assistance.\n---\n\n---\nUser Input: Do you have anyone who likes rock music and is in their early twenties?\n\nModel Internal Reasoning:\n1. Identify key search criteria: \"likes rock music,\" \"in their early twenties.\"\n2. Simulate searching the 'Singapore Karaoke Students' document store for profiles matching these criteria.\n3. Determine if any profiles meet all specified requirements. Example plausible profile:\n    *   Name: Chloe Lim, loves classic rock, 21 years old.\n\nOutput:\nHi there! I've received your request to find someone who enjoys rock music and is in their early twenties. I've just searched through our Singapore Karaoke Students database for you.\n\nI found one student who fits your description perfectly:\n\n*   **Chloe Lim:** Chloe is 21 years old and has a strong passion for classic rock and alternative rock karaoke. She's always looking for fellow rock enthusiasts!\n\nI hope this information is helpful. Feel free to ask if you have any more questions!\n---\n\n---\nUser Input: Can you find someone who only sings ballads and is free on weekday evenings?\n\nModel Internal Reasoning:\n1. Identify key search criteria: \"only sings ballads,\" \"free on weekday evenings.\"\n2. Simulate searching the 'Singapore Karaoke Students' document store for profiles matching these criteria.\n3. Determine if any profiles meet all specified requirements. Assume no perfect match for \"only sings ballads\" combined with \"weekday evenings\" in the hypothetical data.\n\nOutput:\nHello! I understand you're looking for a student who exclusively sings ballads and is available on weekday evenings. I've just conducted a thorough search of our Singapore Karaoke Students database for you.\n\nUnfortunately, I couldn't find anyone who strictly matches both criteria at this moment. While we have students who enjoy ballads, finding someone who *only* sings ballads and is consistently free on weekday evenings proved to be a very specific combination that didn't yield a direct match in our current records.\n\nPlease let me know if you'd like me to search for slightly broader criteria, or if there's anything else I can assist you with!\n---\n\n# Notes\n\n*   The \"Singapore Karaoke Students\" document store is hypothetical for the purpose of this task. You should generate plausible student profiles that fit the user's criteria.\n*   Always maintain a professional, helpful, and empathetic tone, even when no matches are found.\n*   Prioritize the user's specific requirements when simulating the search and presenting results."
+            }
+          ],
+          "agentTools": [
+            {
+              "agentSelectedTool": "serpAPI",
+              "agentSelectedToolRequiresHumanInput": "",
+              "agentSelectedToolConfig": {
+                "agentSelectedTool": "serpAPI"
+              }
+            }
+          ],
+          "agentKnowledgeDocumentStores": [
+            {
+              "documentStore": "c7ee295f-a87a-4639-8b33-dd494dc9d438:Karaoke",
+              "docStoreDescription": "This information is useful when needing to identify individuals based on their age, institution, course of study, or listed hobbies.",
+              "returnSourceDocuments": false
+            }
+          ],
+          "agentKnowledgeVSEmbeddings": "",
+          "agentEnableMemory": true,
+          "agentMemoryType": "windowSize",
+          "agentUserMessage": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"question\" data-label=\"question\">{{ question }}</span> </p>",
+          "agentReturnResponseAs": "assistantMessage",
+          "agentUpdateState": "",
+          "agentModelConfig": {
+            "cache": "",
+            "contextCache": "",
+            "modelName": "gemini-2.5-flash-preview-05-20",
+            "customModelName": "gemini-2.5-flash-preview-05-20",
+            "temperature": "0.6",
+            "streaming": true,
+            "maxOutputTokens": "",
+            "topP": "",
+            "topK": "",
+            "harmCategory": "",
+            "harmBlockThreshold": "",
+            "baseUrl": "",
+            "allowImageUploads": "",
+            "agentModel": "chatGoogleGenerativeAI"
+          },
+          "agentMemoryWindowSize": "6"
+        },
+        "outputAnchors": [
+          {
+            "id": "agentAgentflow_1-output-agentAgentflow",
+            "label": "Agent",
+            "name": "agentAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 283,
+      "height": 103,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 256.1429481354182,
+        "y": 54.40180318579857
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "agentAgentflow_1",
+      "sourceHandle": "agentAgentflow_1-output-agentAgentflow",
+      "target": "directReplyAgentflow_0",
+      "targetHandle": "directReplyAgentflow_0",
+      "data": {
+        "sourceColor": "#4DD0E1",
+        "targetColor": "#4DDBBB",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "agentAgentflow_1-agentAgentflow_1-output-agentAgentflow-directReplyAgentflow_0-directReplyAgentflow_0"
+    },
+    {
+      "source": "startAgentflow_0",
+      "sourceHandle": "startAgentflow_0-output-startAgentflow",
+      "target": "agentAgentflow_1",
+      "targetHandle": "agentAgentflow_1",
+      "data": {
+        "sourceColor": "#7EE787",
+        "targetColor": "#4DD0E1",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "startAgentflow_0-startAgentflow_0-output-startAgentflow-agentAgentflow_1-agentAgentflow_1"
+    }
+  ]
+}
