@@ -109,12 +109,12 @@
         errorDiv.textContent = '';
 
         try {
-          messages.innerHTML += `<div class='chat-msg bot' style='color:#888;'><img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" width="20" height="20" style="vertical-align:middle;margin-right:0.5rem;"> BoardBot is typing...</div>`;
+          messages.innerHTML += `<div class='chat-msg bot' style='color:#888;'><img src="https://cdn-icons-png.flaticon.com/512/4712/4712139.png" width="20" height="20" style="vertical-align:middle;margin-right:0.5rem;"> BoardBot is typing...</div>`;
           const response = await query({"question": userMsg});
           let botMsg = response.text || JSON.stringify(response);
           
           messages.innerHTML = messages.innerHTML.replace('BoardBot is typing...','');
-          messages.innerHTML += `<div class='chat-msg bot'><img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" width="20" height="20" style="vertical-align:middle;margin-right:0.5rem;"><b>BoardBot:</b> ${renderMarkdown(botMsg)}</div>`;
+          messages.innerHTML += `<div class='chat-msg bot'><img src="https://cdn-icons-png.flaticon.com/512/4712/4712139.png" width="20" height="20" style="vertical-align:middle;margin-right:0.5rem;"><b>BoardBot:</b> ${renderMarkdown(botMsg)}</div>`;
           messages.scrollTop = messages.scrollHeight;
         } catch (err) {
           errorDiv.textContent = 'Sorry, there was a problem contacting BoardBot.';
