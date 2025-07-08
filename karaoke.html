@@ -56,11 +56,11 @@
 
       <section id="chatbot-section">
         <h3 style="margin-bottom:1rem;display:flex;align-items:center;gap:1rem;">
-          <img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" alt="Singapore Karaoke AI" class="chatbot-avatar"> Singapore Karaoke AI Assistant
+          <img src="https://cdn-icons-png.flaticon.com/512/4712/4712139.png" alt="Singapore Karaoke AI" class="chatbot-avatar"> Singapore Karaoke AI Assistant
         </h3>
         <div id="chat-messages" style="min-height:60px;margin-bottom:1rem;"></div>
         <form id="chat-form" style="display:flex;gap:0.5rem;">
-          <input id="chat-input" type="text" placeholder="Ask about KTV venues, song recommendations, or find karaoke partners from your institution..." required />
+          <input id="chat-input" type="text" required />
           <button type="submit">Send</button>
         </form>
         <div id="chat-error" style="color:#ef4444;font-size:0.95rem;margin-top:0.5rem;"></div>
@@ -109,15 +109,15 @@
         errorDiv.textContent = '';
 
         try {
-          messages.innerHTML += `<div class='chat-msg bot' style='color:#888;'>BotLah is typing...</div>`;
+          messages.innerHTML += `<div class='chat-msg bot' style='color:#888;'><img src="https://cdn-icons-png.flaticon.com/512/8943/8943364.png" width="20" height="20" style="vertical-align:middle;margin-right:0.5rem;"> KaraokeBot is typing...</div>`;
           const response = await query({"question": userMsg});
           let botMsg = response.text || JSON.stringify(response);
           
-          messages.innerHTML = messages.innerHTML.replace('BotLah is typing...','');
-          messages.innerHTML += `<div class='chat-msg bot'><b>BotLah:</b> ${renderMarkdown(botMsg)}</div>`;
+          messages.innerHTML = messages.innerHTML.replace('KaraokeBot is typing...','');
+          messages.innerHTML += `<div class='chat-msg bot'><img src="https://cdn-icons-png.flaticon.com/512/8943/8943364.png" width="20" height="20" style="vertical-align:middle;margin-right:0.5rem;"><b>KaraokeBot:</b> ${renderMarkdown(botMsg)}</div>`;
           messages.scrollTop = messages.scrollHeight;
         } catch (err) {
-          errorDiv.textContent = 'Sorry, there was a problem contacting BotLah.';
+          errorDiv.textContent = 'Sorry, there was a problem contacting KaraokeBot.';
         }
       });
     });
