@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anime Groups | Find Your Vibe</title>
+  <title>Anime Community | Freesmart</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
 </head>
@@ -17,6 +17,7 @@
         // Highlight the current tab based on the page
         const navMap = {
           'index.html': 'nav-home',
+          'faq.html': 'nav-faq',
           'transport.html': 'nav-transport',
           'anime.html': 'nav-anime',
           'karaoke.html': 'nav-karaoke',
@@ -29,15 +30,71 @@
         if (activeLink) activeLink.classList.add('active-tab');
       });
   </script>
-  <main style="max-width:700px;margin:2.5rem auto 0 auto;padding:1.5rem;background:#f9fafc;border-radius:1.2rem;box-shadow:0 2px 12px #7f5af022;">
-    <h1 style="font-size:2rem;font-weight:900;color:#7f5af0;margin-bottom:1.2rem;">Anime Fans</h1>
-    <p style="font-size:1.1rem;line-height:1.7;">Obsessed with anime? Find your otaku crew, discuss your favorite shows, and get recommendations for your next binge!</p>
-    <section id="chatbot-section" style="margin-top:2.5rem;max-width:500px;margin-left:auto;margin-right:auto;background:#fff;padding:1.5rem 1rem;border-radius:1.2rem;box-shadow:0 2px 12px #7f5af022;">
-      <h3 style="margin-bottom:1rem;display:flex;align-items:center;gap:0.7rem;">
-        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" alt="Chatbot Placeholder" class="chatbot-avatar"> Ask the Anime AI
-      </h3>
-      <div id="chat-messages" style="min-height:60px;margin-bottom:1rem;"></div>
-      <form id="chat-form" style="display:flex;gap:0.5rem;">
+  <main>
+    <div>
+      <h1>Anime Community</h1>
+      <p>Welcome to the otaku paradise! Connect with fellow anime enthusiasts, discuss your favorite series, share recommendations, and dive deep into the rich world of Japanese animation. From classics to the latest seasonal releases!</p>
+      
+      <!-- Anime Categories -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2.5rem 0;">
+        <div style="background: linear-gradient(135deg, #f8fafc, #e2e8f0); border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎬</div>
+          <h3 style="color: #1e293b; margin-bottom: 0.5rem;">Seasonal Anime</h3>
+          <p style="color: #64748b; font-size: 0.95rem;">Latest releases, seasonal discussions, episode reviews, and trending series.</p>
+        </div>
+        <div style="background: linear-gradient(135deg, #f8fafc, #e2e8f0); border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">📚</div>
+          <h3 style="color: #1e293b; margin-bottom: 0.5rem;">Manga & Light Novels</h3>
+          <p style="color: #64748b; font-size: 0.95rem;">Source material discussions, recommendations, and adaptation comparisons.</p>
+        </div>
+        <div style="background: linear-gradient(135deg, #f8fafc, #e2e8f0); border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎭</div>
+          <h3 style="color: #1e293b; margin-bottom: 0.5rem;">Cosplay & Fan Art</h3>
+          <p style="color: #64748b; font-size: 0.95rem;">Creative community, costume making, artwork sharing, and convention meetups.</p>
+        </div>
+      </div>
+
+      <!-- Anime Genres -->
+      <div style="background: linear-gradient(135deg, #fdf4ff, #fae8ff); border: 1px solid #e9d5ff; border-radius: 12px; padding: 2rem; margin: 2rem 0;">
+        <h3 style="color: #7c3aed; margin-bottom: 1rem; text-align: center;">Popular Anime Genres</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="background: #ef4444; color: white; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-weight: bold;">⚔️</span>
+            <span style="color: #7c3aed; font-weight: 500;">Shonen Action</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="background: #ec4899; color: white; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-weight: bold;">💕</span>
+            <span style="color: #7c3aed; font-weight: 500;">Romance & Slice of Life</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="background: #8b5cf6; color: white; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-weight: bold;">🔮</span>
+            <span style="color: #7c3aed; font-weight: 500;">Fantasy & Isekai</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="background: #06b6d4; color: white; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-weight: bold;">🎵</span>
+            <span style="color: #7c3aed; font-weight: 500;">Music & Idol</span>
+          </div>
+        </div>
+      </div>
+
+      <section id="chatbot-section">
+        <h3 style="margin-bottom:1rem;display:flex;align-items:center;gap:1rem;">
+          <img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" alt="Anime AI" class="chatbot-avatar"> Anime AI Assistant
+        </h3>
+        <div id="chat-messages" style="min-height:60px;margin-bottom:1rem;"></div>
+        <form id="chat-form" style="display:flex;gap:0.5rem;">
+          <input id="chat-input" type="text" placeholder="Ask about anime recommendations, genres, or find watch parties..." required />
+          <button type="submit">Send</button>
+        </form>
+        <div id="chat-error" style="color:#ef4444;font-size:0.95rem;margin-top:0.5rem;"></div>
+      </section>
+    </div>
+  </main>
+  <footer>
+    &copy; 2025 Freesmart. Connecting communities intelligently.
+  </footer>
+</body>
+</html>
         <input id="chat-input" type="text" placeholder="Type your question..." style="flex:1;padding:0.5rem 1rem;border-radius:1rem;border:1px solid #e0e7ff;outline:none;" required />
         <button type="submit" style="background:#7f5af0;color:#fff;border:none;border-radius:1rem;padding:0.5rem 1.2rem;font-weight:700;cursor:pointer;">Send</button>
       </form>

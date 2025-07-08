@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gaming Groups | Find Your Vibe</title>
+  <title>Video Games | Freesmart</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
 </head>
@@ -17,6 +17,7 @@
         // Highlight the current tab based on the page
         const navMap = {
           'index.html': 'nav-home',
+          'faq.html': 'nav-faq',
           'transport.html': 'nav-transport',
           'anime.html': 'nav-anime',
           'karaoke.html': 'nav-karaoke',
@@ -28,76 +29,69 @@
         const activeLink = document.getElementById(activeId);
         if (activeLink) activeLink.classList.add('active-tab');
       });
-  </script>
-  <main style="max-width:700px;margin:2.5rem auto 0 auto;padding:1.5rem;background:#f9fafc;border-radius:1.2rem;box-shadow:0 2px 12px #7f5af022;">
-    <h1 style="font-size:2rem;font-weight:900;color:#7f5af0;margin-bottom:1.2rem;">Gamers Unite</h1>
-    <p style="font-size:1.1rem;line-height:1.7;">From casual to hardcore, find your squad, share game tips, and level up your social game!</p>
-    <section id="chatbot-section" style="margin-top:2.5rem;max-width:500px;margin-left:auto;margin-right:auto;background:#fff;padding:1.5rem 1rem;border-radius:1.2rem;box-shadow:0 2px 12px #7f5af022;">
-      <h3 style="margin-bottom:1rem;display:flex;align-items:center;gap:0.7rem;">
-        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" alt="Chatbot Placeholder" class="chatbot-avatar"> Ask the Gaming AI
-      </h3>
-      <div id="chat-messages" style="min-height:60px;margin-bottom:1rem;"></div>
-      <form id="chat-form" style="display:flex;gap:0.5rem;">
-        <input id="chat-input" type="text" placeholder="Type your question..." style="flex:1;padding:0.5rem 1rem;border-radius:1rem;border:1px solid #e0e7ff;outline:none;" required />
-        <button type="submit" style="background:#7f5af0;color:#fff;border:none;border-radius:1rem;padding:0.5rem 1.2rem;font-weight:700;cursor:pointer;">Send</button>
-      </form>
-      <div id="chat-error" style="color:#ff3333;font-size:0.95rem;margin-top:0.5rem;"></div>
-    </section>
-    <script>
-      async function query(data) {
-        // TODO: Replace YOUR_SPACE and YOUR_CHATFLOW_ID with your own values below
-        // For the rest of the chatbot, use this as the placeholder:
-        // https://YOUR_SPACE.hf.space/api/v1/prediction/YOUR_CHATFLOW_ID3
-        const response = await fetch(
-          "https://YOUR_SPACE.hf.space/api/v1/prediction/YOUR_CHATFLOW_ID3",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-          }
-        );
-        const result = await response.json();
-        return result;
-      }
-      function renderMarkdown(md) {
-        let html = md
-          .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
-          .replace(/\*(.*?)\*/g, '<i>$1</i>')
-          .replace(/`([^`]+)`/g, '<code>$1</code>')
-          .replace(/\n/g, '<br>');
-        return html;
-      }
-      document.addEventListener('DOMContentLoaded', function() {
-        const form = document.getElementById('chat-form');
-        const input = document.getElementById('chat-input');
-        const messages = document.getElementById('chat-messages');
-        const errorDiv = document.getElementById('chat-error');
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          const userMsg = input.value.trim();
-          if (!userMsg) return;
-          messages.innerHTML += `<div class='chat-msg user'><b>You:</b> ${userMsg}</div>`;
-          input.value = '';
-          errorDiv.textContent = '';
-          try {
-            messages.innerHTML += `<div class='chat-msg bot' style='color:#888;'>BotLah is typing...</div>`;
-            const response = await query({"question": userMsg});
-            let botMsg = response.text || JSON.stringify(response);
-            messages.innerHTML = messages.innerHTML.replace('BotLah is typing...','');
-            messages.innerHTML += `<div class='chat-msg bot'><b>BotLah:</b> ${renderMarkdown(botMsg)}</div>`;
-            messages.scrollTop = messages.scrollHeight;
-          } catch (err) {
-            errorDiv.textContent = 'Sorry, there was a problem contacting BotLah.';
-          }
-        });
-      });
-    </script>
-  </main>
-  <footer style="margin-top:2.5rem;text-align:center;">
-    &copy; 2025 Find Your Vibe. Not a real service.
-  </footer>
+  </script>  <main>
+    <div>
+      <h1>Video Games Community</h1>
+      <p>Level up your gaming experience! Connect with fellow video game enthusiasts, share strategies, discover new games, and find your perfect gaming squad. From indie gems to AAA blockbusters, casual mobile games to competitive esports - all gamers welcome!</p>
+      
+      <!-- Featured Gaming Categories -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2.5rem 0;">
+        <div style="background: linear-gradient(135deg, #f8fafc, #e2e8f0); border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎮</div>
+          <h3 style="color: #1e293b; margin-bottom: 0.5rem;">PC Gaming</h3>
+          <p style="color: #64748b; font-size: 0.95rem;">Steam, Epic Games, indie titles, and AAA releases. Share your library and recommendations!</p>
+        </div>
+        <div style="background: linear-gradient(135deg, #f8fafc, #e2e8f0); border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🏆</div>
+          <h3 style="color: #1e293b; margin-bottom: 0.5rem;">Esports</h3>
+          <p style="color: #64748b; font-size: 0.95rem;">Competitive gaming, tournaments, team formation, and professional play discussions.</p>
+        </div>
+        <div style="background: linear-gradient(135deg, #f8fafc, #e2e8f0); border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">📱</div>
+          <h3 style="color: #1e293b; margin-bottom: 0.5rem;">Mobile Gaming</h3>
+          <p style="color: #64748b; font-size: 0.95rem;">iOS, Android, casual games, gacha games, and mobile esports communities.</p>
+        </div>
+      </div>
 
+      <!-- Gaming Platforms -->
+      <div style="background: linear-gradient(135deg, #fef3e2, #fed7aa); border: 1px solid #fdba74; border-radius: 12px; padding: 2rem; margin: 2rem 0;">
+        <h3 style="color: #9a3412; margin-bottom: 1rem; text-align: center;">Popular Gaming Platforms</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="background: #3b82f6; color: white; border-radius: 8px; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-weight: bold;">PS</span>
+            <span style="color: #9a3412; font-weight: 500;">PlayStation</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="background: #10b981; color: white; border-radius: 8px; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-weight: bold;">XB</span>
+            <span style="color: #9a3412; font-weight: 500;">Xbox</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="background: #ef4444; color: white; border-radius: 8px; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-weight: bold;">SW</span>
+            <span style="color: #9a3412; font-weight: 500;">Nintendo Switch</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="background: #6366f1; color: white; border-radius: 8px; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-weight: bold;">PC</span>
+            <span style="color: #9a3412; font-weight: 500;">PC Gaming</span>
+          </div>
+        </div>
+      </div>
+
+      <section id="chatbot-section">
+        <h3 style="margin-bottom:1rem;display:flex;align-items:center;gap:1rem;">
+          <img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" alt="Video Games AI" class="chatbot-avatar"> Video Games AI Assistant
+        </h3>
+        <div id="chat-messages" style="min-height:60px;margin-bottom:1rem;"></div>
+        <form id="chat-form" style="display:flex;gap:0.5rem;">
+          <input id="chat-input" type="text" placeholder="Ask about video games, platforms, or find gaming buddies..." required />
+          <button type="submit">Send</button>
+        </form>
+        <div id="chat-error" style="color:#ef4444;font-size:0.95rem;margin-top:0.5rem;"></div>
+      </section>
+    </div>
+  </main>
+  <footer>
+    &copy; 2025 Freesmart. Connecting communities intelligently.
+  </footer>
 </body>
+</html>
 </html>
