@@ -48,7 +48,16 @@
     }
   </style>
 </head>
-<body>
+<body style="background: linear-gradient(135deg, #ff3366, #33ffaa, #3366ff, #ff9933, #aa33ff, #33aaff); background-size: 600% 600%; animation: gradientShift 5s ease infinite; min-height: 100vh;">
+  <style>
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      25% { background-position: 100% 0%; }
+      50% { background-position: 100% 100%; }
+      75% { background-position: 0% 100%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
   <div id="navbar"></div>
   <script>
     fetch('navbar.html')
