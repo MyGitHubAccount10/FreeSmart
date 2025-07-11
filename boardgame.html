@@ -84,6 +84,39 @@
           <p style="font-size: 1.1rem; color: rgba(255, 255, 255, 0.85); text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.2);">Find your tribe, level up your game nights!</p>
         </div>
       </div>
+
+      <!-- ChatBot Section - Moved up for better visibility -->
+      <section id="chatbot-section" style="background: linear-gradient(135deg, #1e293b, #334155); border-radius: 20px; padding: 2rem; margin: 3rem 0; color: white; box-shadow: 0 20px 40px rgba(30, 41, 59, 0.3); border: 2px solid #475569;">
+        <h3 style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; font-size: 1.4rem; font-weight: 700;">
+          <img src="https://cdn-icons-png.flaticon.com/512/4712/4712139.png" alt="Board Games AI" class="chatbot-avatar" style="width: 40px; height: 40px; border-radius: 50%; background: white; padding: 5px;"> 
+          <span>🎲 BoardBot - Your Gaming Guru</span>
+        </h3>
+        <div style="background: rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 1rem; margin-bottom: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.2);">
+          <p style="margin: 0; font-size: 1rem; opacity: 0.9; line-height: 1.6;">
+            <strong>Ask me anything!</strong> 🤖✨<br>
+            • Game recommendations based on your vibe<br>
+            • Rules explanations (no more manual reading!)<br>
+            • Find local gaming groups near you<br>
+            • Strategy tips to crush your friends 😎
+          </p>
+        </div>
+        <div id="chat-messages" style="background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 1rem; min-height: 120px; margin-bottom: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1); max-height: 300px; overflow-y: auto;"></div>
+        <!-- Enhanced Chat Input Section -->
+        <div style="background: linear-gradient(135deg, #8b5cf6, #06b6d4); padding: 3px; border-radius: 30px; margin-bottom: 1rem; box-shadow: 0 0 30px rgba(139, 92, 246, 0.4); animation: pulse 3s infinite;">
+          <div style="background: rgba(30, 41, 59, 0.95); border-radius: 27px; padding: 1rem;">
+            <div style="text-align: center; margin-bottom: 0.8rem; font-size: 0.9rem; color: #06b6d4; font-weight: 600;">
+              💬 Ask BoardBot anything! Type below ⬇️
+            </div>
+            <form id="chat-form" style="display: flex; gap: 1rem; align-items: center;">
+              <input id="chat-input" type="text" placeholder="Type your question... (e.g., 'Recommend games for 4 players')" style="flex: 1; padding: 1rem 1.5rem; border: 3px solid #8b5cf6; border-radius: 25px; background: rgba(255, 255, 255, 0.95); color: #1e293b; font-size: 1.1rem; font-weight: 500; box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); transition: all 0.3s ease;" required />
+              <button type="submit" style="background: linear-gradient(135deg, #8b5cf6, #06b6d4); color: white; border: none; padding: 1rem 2rem; border-radius: 25px; font-weight: 700; cursor: pointer; transition: all 0.3s ease; font-size: 1.1rem; box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4); animation: float 2s ease-in-out infinite;">
+                Send 🚀
+              </button>
+            </form>
+          </div>
+        </div>
+        <div id="chat-error" style="color: #fca5a5; font-size: 0.95rem; margin-top: 1rem; padding: 0.5rem; border-radius: 8px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); display: none;"></div>
+      </section>
       
       <!-- Featured Board Game Categories -->
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin: 3rem 0;">
@@ -131,38 +164,6 @@
           </div>
         </div>
       </div>
-
-      <section id="chatbot-section" style="background: linear-gradient(135deg, #1e293b, #334155); border-radius: 20px; padding: 2rem; margin: 3rem 0; color: white; box-shadow: 0 20px 40px rgba(30, 41, 59, 0.3); border: 2px solid #475569;">
-        <h3 style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; font-size: 1.4rem; font-weight: 700;">
-          <img src="https://cdn-icons-png.flaticon.com/512/4712/4712139.png" alt="Board Games AI" class="chatbot-avatar" style="width: 40px; height: 40px; border-radius: 50%; background: white; padding: 5px;"> 
-          <span>🎲 BoardBot - Your Gaming Guru</span>
-        </h3>
-        <div style="background: rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 1rem; margin-bottom: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.2);">
-          <p style="margin: 0; font-size: 1rem; opacity: 0.9; line-height: 1.6;">
-            <strong>Ask me anything!</strong> 🤖✨<br>
-            • Game recommendations based on your vibe<br>
-            • Rules explanations (no more manual reading!)<br>
-            • Find local gaming groups near you<br>
-            • Strategy tips to crush your friends 😎
-          </p>
-        </div>
-        <div id="chat-messages" style="background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 1rem; min-height: 120px; margin-bottom: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1); max-height: 300px; overflow-y: auto;"></div>
-        <!-- Enhanced Chat Input Section -->
-        <div style="background: linear-gradient(135deg, #8b5cf6, #06b6d4); padding: 3px; border-radius: 30px; margin-bottom: 1rem; box-shadow: 0 0 30px rgba(139, 92, 246, 0.4); animation: pulse 3s infinite;">
-          <div style="background: rgba(30, 41, 59, 0.95); border-radius: 27px; padding: 1rem;">
-            <div style="text-align: center; margin-bottom: 0.8rem; font-size: 0.9rem; color: #06b6d4; font-weight: 600;">
-              💬 Ask BoardBot anything! Type below ⬇️
-            </div>
-            <form id="chat-form" style="display: flex; gap: 1rem; align-items: center;">
-              <input id="chat-input" type="text" placeholder="Type your question... (e.g., 'Recommend games for 4 players')" style="flex: 1; padding: 1rem 1.5rem; border: 3px solid #8b5cf6; border-radius: 25px; background: rgba(255, 255, 255, 0.95); color: #1e293b; font-size: 1.1rem; font-weight: 500; box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); transition: all 0.3s ease;" required />
-              <button type="submit" style="background: linear-gradient(135deg, #8b5cf6, #06b6d4); color: white; border: none; padding: 1rem 2rem; border-radius: 25px; font-weight: 700; cursor: pointer; transition: all 0.3s ease; font-size: 1.1rem; box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4); animation: float 2s ease-in-out infinite;">
-                Send 🚀
-              </button>
-            </form>
-          </div>
-        </div>
-        <div id="chat-error" style="color: #fca5a5; font-size: 0.95rem; margin-top: 1rem; padding: 0.5rem; border-radius: 8px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); display: none;"></div>
-      </section>
     </div>
   </main>
   <script>
