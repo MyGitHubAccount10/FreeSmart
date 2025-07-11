@@ -6,6 +6,47 @@
   <title>Board Games | Freesmart</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+  <style>
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .chat-msg {
+      animation: slideIn 0.3s ease-out;
+    }
+    
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+    }
+    
+    input:focus {
+      outline: none;
+      border-color: rgba(139, 92, 246, 0.5);
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+    }
+    
+    .floating-emoji {
+      animation: float 3s ease-in-out infinite;
+    }
+  </style>
 </head>
 <body>
   <div id="navbar"></div>
@@ -32,38 +73,87 @@
   </script>
   <main>
     <div>
-      <h1>Board Games Community</h1>
-      <p>Roll the dice and join fellow board game enthusiasts! Whether you're into strategic Eurogames, classic family games, party games, or complex war games - find your perfect gaming group. Share reviews, organize game nights, and discover your next favorite tabletop adventure!</p>
+      <h1 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(135deg, #8b5cf6, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">🎲 Board Games Community 🎲</h1>
+      <p style="text-align: center; font-size: 1.2rem; max-width: 800px; margin: 0 auto 2rem auto; color: #475569; line-height: 1.7;">Roll the dice and join fellow board game enthusiasts! Whether you're into strategic Eurogames, classic family games, party games, or complex war games - find your perfect gaming group. Share reviews, organize game nights, and discover your next favorite tabletop adventure!</p>
+      
+      <!-- Hero Section -->
+      <div style="text-align: center; margin: 2rem 0 3rem 0;">
+        <div style="display: inline-block; background: linear-gradient(135deg, #8b5cf6, #06b6d4); padding: 2rem; border-radius: 20px; color: white; box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3); transform: rotate(-1deg); transition: transform 0.3s ease;">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">🎲🃏🎯</div>
+          <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem; font-weight: 700; color: rgba(255, 255, 255, 0.95); text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);">Ready to Roll?</h2>
+          <p style="font-size: 1.1rem; color: rgba(255, 255, 255, 0.85); text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.2);">Find your tribe, level up your game nights!</p>
+        </div>
+      </div>
       
       <!-- Featured Board Game Categories -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2.5rem 0;">
-        <div style="background: linear-gradient(135deg, #f8fafc, #e2e8f0); border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎯</div>
-          <h3 style="color: #1e293b; margin-bottom: 0.5rem;">Strategy Games</h3>
-          <p style="color: #64748b; font-size: 0.95rem;">Eurogames, worker placement, engine building, and more complex strategic experiences.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin: 3rem 0;">
+        <div style="background: linear-gradient(135deg, #fef3c7, #fcd34d); border: 2px solid #f59e0b; border-radius: 20px; padding: 2rem; text-align: center; transition: all 0.3s ease; cursor: pointer; transform: rotate(1deg);" onmouseover="this.style.transform='rotate(0deg) scale(1.05)'" onmouseout="this.style.transform='rotate(1deg) scale(1)'">
+          <div style="font-size: 3rem; margin-bottom: 1rem; animation: bounce 2s infinite;">🎯</div>
+          <h3 style="color: #92400e; margin-bottom: 0.8rem; font-size: 1.3rem; font-weight: 700;">Strategy Games</h3>
+          <p style="color: #b45309; font-size: 1rem; line-height: 1.6;">Eurogames, worker placement, engine building, and more complex strategic experiences. Think deep, play smart!</p>
+          <div style="margin-top: 1rem; font-size: 0.9rem; color: #d97706; font-weight: 600;">Popular: Wingspan, Azul, Ticket to Ride</div>
         </div>
-        <div style="background: linear-gradient(135deg, #f8fafc, #e2e8f0); border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-          <div style="font-size: 2.5rem; margin-bottom: 1rem;">👨‍👩‍👧‍👦</div>
-          <h3 style="color: #1e293b; margin-bottom: 0.5rem;">Family Games</h3>
-          <p style="color: #64748b; font-size: 0.95rem;">Fun for all ages! Gateway games, classics, and family-friendly adventures.</p>
+        
+        <div style="background: linear-gradient(135deg, #ddd6fe, #c4b5fd); border: 2px solid #8b5cf6; border-radius: 20px; padding: 2rem; text-align: center; transition: all 0.3s ease; cursor: pointer; transform: rotate(-1deg);" onmouseover="this.style.transform='rotate(0deg) scale(1.05)'" onmouseout="this.style.transform='rotate(-1deg) scale(1)'">
+          <div style="font-size: 3rem; margin-bottom: 1rem; animation: bounce 2s infinite 0.5s;">👨‍👩‍👧‍👦</div>
+          <h3 style="color: #6b21a8; margin-bottom: 0.8rem; font-size: 1.3rem; font-weight: 700;">Family Games</h3>
+          <p style="color: #7c3aed; font-size: 1rem; line-height: 1.6;">Fun for all ages! Gateway games, classics, and family-friendly adventures. Bonding time guaranteed!</p>
+          <div style="margin-top: 1rem; font-size: 0.9rem; color: #8b5cf6; font-weight: 600;">Popular: Splendor, King of Tokyo, Dixit</div>
         </div>
-        <div style="background: linear-gradient(135deg, #f8fafc, #e2e8f0); border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎉</div>
-          <h3 style="color: #1e293b; margin-bottom: 0.5rem;">Party Games</h3>
-          <p style="color: #64748b; font-size: 0.95rem;">Social deduction, trivia, charades, and games that bring people together.</p>
+        
+        <div style="background: linear-gradient(135deg, #fecaca, #f87171); border: 2px solid #ef4444; border-radius: 20px; padding: 2rem; text-align: center; transition: all 0.3s ease; cursor: pointer; transform: rotate(1deg);" onmouseover="this.style.transform='rotate(0deg) scale(1.05)'" onmouseout="this.style.transform='rotate(1deg) scale(1)'">
+          <div style="font-size: 3rem; margin-bottom: 1rem; animation: bounce 2s infinite 1s;">🎉</div>
+          <h3 style="color: #991b1b; margin-bottom: 0.8rem; font-size: 1.3rem; font-weight: 700;">Party Games</h3>
+          <p style="color: #dc2626; font-size: 1rem; line-height: 1.6;">Social deduction, trivia, charades, and games that bring people together. Laugh until your sides hurt!</p>
+          <div style="margin-top: 1rem; font-size: 0.9rem; color: #ef4444; font-weight: 600;">Popular: Codenames, Wavelength, Telestrations</div>
         </div>
       </div>
 
-      <section id="chatbot-section">
-        <h3 style="margin-bottom:1rem;display:flex;align-items:center;gap:1rem;">
-          <img src="https://cdn-icons-png.flaticon.com/512/4712/4712139.png" alt="Board Games AI" class="chatbot-avatar"> Board Games AI Assistant
+      <!-- Quick Stats Section -->
+      <div style="background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border: 2px solid #0ea5e9; border-radius: 20px; padding: 2rem; margin: 3rem 0; text-align: center;">
+        <h3 style="color: #0c4a6e; margin-bottom: 1.5rem; font-size: 1.5rem;">📊 Community Stats</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem;">
+          <div>
+            <div style="font-size: 2rem; font-weight: 700; color: #0ea5e9;">1,247</div>
+            <div style="color: #075985; font-size: 0.9rem;">Active Players</div>
+          </div>
+          <div>
+            <div style="font-size: 2rem; font-weight: 700; color: #0ea5e9;">89</div>
+            <div style="color: #075985; font-size: 0.9rem;">Game Groups</div>
+          </div>
+          <div>
+            <div style="font-size: 2rem; font-weight: 700; color: #0ea5e9;">456</div>
+            <div style="color: #075985; font-size: 0.9rem;">Games Played</div>
+          </div>
+          <div>
+            <div style="font-size: 2rem; font-weight: 700; color: #0ea5e9;">23</div>
+            <div style="color: #075985; font-size: 0.9rem;">Events This Week</div>
+          </div>
+        </div>
+      </div>
+
+      <section id="chatbot-section" style="background: linear-gradient(135deg, #1e293b, #334155); border-radius: 20px; padding: 2rem; margin: 3rem 0; color: white; box-shadow: 0 20px 40px rgba(30, 41, 59, 0.3); border: 2px solid #475569;">
+        <h3 style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; font-size: 1.4rem; font-weight: 700;">
+          <img src="https://cdn-icons-png.flaticon.com/512/4712/4712139.png" alt="Board Games AI" class="chatbot-avatar" style="width: 40px; height: 40px; border-radius: 50%; background: white; padding: 5px;"> 
+          <span>🎲 BoardBot - Your Gaming Guru</span>
         </h3>
-        <div id="chat-messages" style="min-height:60px;margin-bottom:1rem;"></div>
-        <form id="chat-form" style="display:flex;gap:0.5rem;">
-          <input id="chat-input" type="text" required />
-          <button type="submit">Send</button>
+        <div style="background: rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 1rem; margin-bottom: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.2);">
+          <p style="margin: 0; font-size: 1rem; opacity: 0.9; line-height: 1.6;">
+            <strong>Ask me anything!</strong> 🤖✨<br>
+            • Game recommendations based on your vibe<br>
+            • Rules explanations (no more manual reading!)<br>
+            • Find local gaming groups near you<br>
+            • Strategy tips to crush your friends 😎
+          </p>
+        </div>
+        <div id="chat-messages" style="background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 1rem; min-height: 120px; margin-bottom: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1); max-height: 300px; overflow-y: auto;"></div>
+        <form id="chat-form" style="display: flex; gap: 1rem; align-items: center;">
+          <input id="chat-input" type="text" placeholder="Type your question... (e.g., 'Recommend games for 4 players')" style="flex: 1; padding: 0.8rem 1rem; border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 25px; background: rgba(255, 255, 255, 0.1); color: white; font-size: 1rem;" required />
+          <button type="submit" style="background: linear-gradient(135deg, #8b5cf6, #06b6d4); color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 25px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; font-size: 1rem;">
+            Send 🚀
+          </button>
         </form>
-        <div id="chat-error" style="color:#ef4444;font-size:0.95rem;margin-top:0.5rem;"></div>
+        <div id="chat-error" style="color: #fca5a5; font-size: 0.95rem; margin-top: 1rem; padding: 0.5rem; border-radius: 8px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); display: none;"></div>
       </section>
     </div>
   </main>
@@ -98,32 +188,136 @@
       const input = document.getElementById('chat-input');
       const messages = document.getElementById('chat-messages');
       const errorDiv = document.getElementById('chat-error');
+      
+      // Add welcome message
+      messages.innerHTML = `
+        <div class='chat-msg bot' style='background: rgba(139, 92, 246, 0.2); border-radius: 15px; padding: 1rem; margin-bottom: 1rem; border-left: 4px solid #8b5cf6;'>
+          <div style='display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;'>
+            <img src="https://cdn-icons-png.flaticon.com/512/4712/4712139.png" width="24" height="24" style="border-radius: 50%; background: white; padding: 3px;">
+            <strong>BoardBot</strong>
+          </div>
+          <div style='font-size: 1rem; line-height: 1.5;'>
+            Hey there, fellow gamer! 🎲✨ I'm BoardBot, your personal board game assistant! Ask me anything about games, rules, recommendations, or finding gaming groups. Let's roll! 🎯
+          </div>
+        </div>
+      `;
 
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const userMsg = input.value.trim();
         if (!userMsg) return;
 
-        messages.innerHTML += `<div class='chat-msg user'><b>You:</b> ${userMsg}</div>`;
+        // Add user message with better styling
+        messages.innerHTML += `
+          <div class='chat-msg user' style='background: rgba(6, 182, 212, 0.2); border-radius: 15px; padding: 1rem; margin-bottom: 1rem; border-left: 4px solid #06b6d4; text-align: right;'>
+            <div style='display: flex; align-items: center; gap: 0.5rem; justify-content: flex-end; margin-bottom: 0.5rem;'>
+              <strong>You</strong>
+              <div style='width: 24px; height: 24px; border-radius: 50%; background: linear-gradient(135deg, #06b6d4, #8b5cf6); display: flex; align-items: center; justify-content: center; font-size: 12px;'>🎮</div>
+            </div>
+            <div style='font-size: 1rem; line-height: 1.5;'>${userMsg}</div>
+          </div>
+        `;
+        
         input.value = '';
-        errorDiv.textContent = '';
+        errorDiv.style.display = 'none';
 
         try {
-          messages.innerHTML += `<div class='chat-msg bot' style='color:#888;'><img src="https://cdn-icons-png.flaticon.com/512/4712/4712139.png" width="20" height="20" style="vertical-align:middle;margin-right:0.5rem;"> BoardBot is typing...</div>`;
+          // Add typing indicator with Gen Z flair
+          const typingId = Date.now();
+          messages.innerHTML += `
+            <div class='chat-msg bot typing-${typingId}' style='background: rgba(139, 92, 246, 0.2); border-radius: 15px; padding: 1rem; margin-bottom: 1rem; border-left: 4px solid #8b5cf6; opacity: 0.7;'>
+              <div style='display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;'>
+                <img src="https://cdn-icons-png.flaticon.com/512/4712/4712139.png" width="24" height="24" style="border-radius: 50%; background: white; padding: 3px;">
+                <strong>BoardBot</strong>
+              </div>
+              <div style='font-size: 1rem; line-height: 1.5;'>
+                <span style='animation: pulse 1.5s infinite;'>🤔 Thinking...</span> Hold up, let me consult my game database! 📚✨
+              </div>
+            </div>
+          `;
+          
+          messages.scrollTop = messages.scrollHeight;
+          
           const response = await query({"question": userMsg});
           let botMsg = response.text || JSON.stringify(response);
           
-          messages.innerHTML = messages.innerHTML.replace('BoardBot is typing...','');
-          messages.innerHTML += `<div class='chat-msg bot'><img src="https://cdn-icons-png.flaticon.com/512/4712/4712139.png" width="20" height="20" style="vertical-align:middle;margin-right:0.5rem;"><b>BoardBot:</b> ${renderMarkdown(botMsg)}</div>`;
+          // Remove typing indicator
+          const typingElement = messages.querySelector(`.typing-${typingId}`);
+          if (typingElement) {
+            typingElement.remove();
+          }
+          
+          // Add bot response with enhanced styling
+          messages.innerHTML += `
+            <div class='chat-msg bot' style='background: rgba(139, 92, 246, 0.2); border-radius: 15px; padding: 1rem; margin-bottom: 1rem; border-left: 4px solid #8b5cf6;'>
+              <div style='display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;'>
+                <img src="https://cdn-icons-png.flaticon.com/512/4712/4712139.png" width="24" height="24" style="border-radius: 50%; background: white; padding: 3px;">
+                <strong>BoardBot</strong>
+              </div>
+              <div style='font-size: 1rem; line-height: 1.5;'>${renderMarkdown(botMsg)}</div>
+            </div>
+          `;
+          
           messages.scrollTop = messages.scrollHeight;
         } catch (err) {
-          errorDiv.textContent = 'Sorry, there was a problem contacting BoardBot.';
+          // Remove typing indicator on error
+          const typingElement = messages.querySelector(`.typing-${typingId}`);
+          if (typingElement) {
+            typingElement.remove();
+          }
+          
+          errorDiv.textContent = '😅 Oops! BoardBot is having a moment. Try again in a sec!';
+          errorDiv.style.display = 'block';
+        }
+      });
+
+      // Add some placeholder suggestions
+      const suggestions = [
+        "What's a good game for 4 players?",
+        "Explain how to play Azul",
+        "Find gaming groups near me",
+        "Best strategy games for beginners"
+      ];
+      
+      input.addEventListener('focus', function() {
+        if (!input.value) {
+          const randomSuggestion = suggestions[Math.floor(Math.random() * suggestions.length)];
+          input.placeholder = `Try: "${randomSuggestion}"`;
         }
       });
     });
   </script>
-  <footer>
-    &copy; 2025 Freesmart. Connecting communities intelligently.
+  
+  <!-- Fun Gaming Tips Section -->
+  <div style="background: linear-gradient(135deg, #fef3c7, #fed7aa); border-radius: 20px; padding: 2rem; margin: 3rem 0; text-align: center; border: 2px solid #f59e0b;">
+    <h3 style="color: #92400e; margin-bottom: 1.5rem; font-size: 1.4rem; font-weight: 700;">🎲 Pro Gaming Tips 🎲</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; text-align: left;">
+      <div style="background: rgba(255, 255, 255, 0.7); padding: 1.2rem; border-radius: 15px; border: 1px solid rgba(245, 158, 11, 0.3);">
+        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🏆</div>
+        <h4 style="color: #92400e; font-size: 1.1rem; margin-bottom: 0.5rem;">Level Up Your Strategy</h4>
+        <p style="color: #b45309; font-size: 0.95rem; line-height: 1.5;">Always think 2-3 moves ahead. The best players anticipate their opponents' strategies!</p>
+      </div>
+      <div style="background: rgba(255, 255, 255, 0.7); padding: 1.2rem; border-radius: 15px; border: 1px solid rgba(245, 158, 11, 0.3);">
+        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🤝</div>
+        <h4 style="color: #92400e; font-size: 1.1rem; margin-bottom: 0.5rem;">Social Gaming</h4>
+        <p style="color: #b45309; font-size: 0.95rem; line-height: 1.5;">Board games are about connection. Don't just play to win - play to have fun with friends!</p>
+      </div>
+      <div style="background: rgba(255, 255, 255, 0.7); padding: 1.2rem; border-radius: 15px; border: 1px solid rgba(245, 158, 11, 0.3);">
+        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📚</div>
+        <h4 style="color: #92400e; font-size: 1.1rem; margin-bottom: 0.5rem;">Learn the Rules</h4>
+        <p style="color: #b45309; font-size: 0.95rem; line-height: 1.5;">Spend time learning rules properly. A smooth game is way more fun than stopping every 5 minutes!</p>
+      </div>
+    </div>
+  </div>
+  
+  <footer style="text-align: center; margin-top: 3rem; padding: 2rem; background: linear-gradient(135deg, #1e293b, #334155); color: white; border-radius: 20px;">
+    <div style="font-size: 1.2rem; margin-bottom: 1rem;">🎲 Ready to Roll? 🎲</div>
+    <div style="font-size: 0.95rem; opacity: 0.8;">
+      &copy; 2025 Freesmart. Connecting board game communities intelligently.
+    </div>
+    <div style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.6;">
+      Keep calm and game on! 🎯✨
+    </div>
   </footer>
 </body>
 </html>
