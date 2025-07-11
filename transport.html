@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
 </head>
-<body>
+<body class="transport-theme-page">
   <div id="navbar"></div>
   <script>
     fetch('navbar.html')
@@ -36,6 +36,79 @@
       <h1>Transport Enthusiasts</h1>
       <p>All aboard! Connect with fellow transport lovers who share your passion for everything that moves. From vintage trains to modern metros, classic buses to cutting-edge aviation - find your transport tribe!</p>
       
+      <!-- Chatbot Section (Moved Up) -->
+      <section id="chatbot-section">
+        <h3 style="margin-bottom:1rem;display:flex;align-items:center;gap:1rem;">
+          <img src="https://cdn-icons-png.flaticon.com/512/4712/4712139.png" alt="Transport AI" class="chatbot-avatar"> Transport Group Finder AI Assistant
+        </h3>
+        <div id="chat-messages" style="min-height:60px;margin-bottom:1rem;"></div>
+        <form id="chat-form" style="display:flex;gap:0.5rem;">
+          <input id="chat-input" type="text" placeholder="Type your question..." style="flex:1;padding:0.5rem 1rem;border-radius:1rem;border:1px solid #e0e7ff;outline:none;" required />
+          <button type="submit" style="background:#7f5af0;color:#fff;border:none;border-radius:1rem;padding:0.5rem 1.2rem;font-weight:700;cursor:pointer;">Send</button>
+        </form>
+        <div id="chat-error" style="color:#ef4444;font-size:0.95rem;margin-top:0.5rem;"></div>
+      </section>
+
+      <!-- Chatbot Script -->
+      <script>
+        async function query(data) {
+          const response = await fetch(
+            "https://ralp123-flowise.hf.space/api/v1/prediction/d92c0dbd-4148-4cb7-b50f-1d3b511ec7b3",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(data)
+            }
+          );
+          const result = await response.json();
+          return result;
+        }
+        function renderMarkdown(md) {
+          let html = md
+            .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
+            .replace(/\*(.*?)\*/g, '<i>$1</i>')
+            .replace(/`([^`]+)`/g, '<code>$1</code>')
+            .replace(/\n/g, '<br>');
+          return html;
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+          const form = document.getElementById('chat-form');
+          const input = document.getElementById('chat-input');
+          const messages = document.getElementById('chat-messages');
+          const errorDiv = document.getElementById('chat-error');
+          form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const userMsg = input.value.trim();
+            if (!userMsg) return;
+            messages.innerHTML += `<div class='chat-msg user'><b>You:</b> ${userMsg}</div>`;
+            input.value = '';
+            errorDiv.textContent = '';
+            try {
+              messages.innerHTML += `<div class='chat-msg bot' style='color:#888;'><img src="https://cdn-icons-png.flaticon.com/512/4712/4712139.png" width="20" height="20" style="vertical-align:middle;margin-right:0.5rem;"> TransportBot is typing...</div>`;
+              const response = await query({"question": userMsg});
+              let botMsg = response.text || JSON.stringify(response);
+              const typingMessage = messages.querySelector(".bot:last-child");
+              if (typingMessage && typingMessage.textContent.includes("typing...")) {
+                typingMessage.remove();
+              }
+              messages.innerHTML += `<div class='chat-msg bot'><img src="https://cdn-icons-png.flaticon.com/512/4712/4712139.png" width="20" height="20" style="vertical-align:middle;margin-right:0.5rem;"><b>TransportBot:</b> ${renderMarkdown(botMsg)}</div>`;
+              messages.scrollTop = messages.scrollHeight;
+            } catch (err) {
+              errorDiv.textContent = 'Sorry, there was a problem contacting TransportBot.';
+              const typingMessage = messages.querySelector(".bot:last-child");
+              if (typingMessage && typingMessage.textContent.includes("typing...")) {
+                typingMessage.remove();
+              }
+            }
+          });
+        });
+      </script>
+
+      <!-- New Header for Transport Categories -->
+      <h2 style="text-align: center; margin-top: 3rem;">Transport Group Categories</h2>
+
       <!-- Transport Categories -->
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2.5rem 0;">
         <!-- Railways -->
@@ -75,89 +148,16 @@
           <p style="color: #64748b; font-size: 0.95rem;">A niche community for spotting prime movers, container trucks, and construction vehicles in Tuas and industrial estates.</p>
         </div>
         <!-- E-Scooter/Bicycle -->
-        <div style="background: linear-gradient(135deg, #f8fafc, #e2e8f0); border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <div style="background: linear-gradient(135deg, #f8fafc, #e2e8f0); border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; text-align: center; transition: transform 0.3s ease, box--shadow 0.3s ease;">
           <div style="font-size: 2.5rem; margin-bottom: 1rem;">🚴‍♂️</div>
           <h3 style="color: #1e293b; margin-bottom: 0.5rem;">E-Scooter & Bicycle</h3>
           <p style="color: #64748b; font-size: 0.95rem;">For students and commuters who use bicycles and PMDs. Share routes, tips, and advocate for better cycling infrastructure and safety.</p>
         </div>
       </div>
-
-      <section id="chatbot-section">
-        <h3 style="margin-bottom:1rem;display:flex;align-items:center;gap:1rem;">
-          <img src="https://cdn-icons-png.flaticon.com/512/4712/4712139.png" alt="Transport AI" class="chatbot-avatar"> Transport Group Finder AI Assistant
-        </h3>
-        <div id="chat-messages" style="min-height:60px;margin-bottom:1rem;"></div>
-        <form id="chat-form" style="display:flex;gap:0.5rem;">
-          <input id="chat-input" type="text" required />
-          <button type="submit">Send</button>
-        </form>
-        <div id="chat-error" style="color:#ef4444;font-size:0.95rem;margin-top:0.5rem;"></div>
-      </section>
     </div>
   </main>
   <footer>
-    &copy; 2025 Freesmart. Connecting communities intelligently.
-  </footer>
-</body>
-</html>
-      <form id="chat-form" style="display:flex;gap:0.5rem;">
-        <input id="chat-input" type="text" placeholder="Type your question..." style="flex:1;padding:0.5rem 1rem;border-radius:1rem;border:1px solid #e0e7ff;outline:none;" required />
-        <button type="submit" style="background:#7f5af0;color:#fff;border:none;border-radius:1rem;padding:0.5rem 1.2rem;font-weight:700;cursor:pointer;">Send</button>
-      </form>
-      <div id="chat-error" style="color:#ff3333;font-size:0.95rem;margin-top:0.5rem;"></div>
-    </section>
-    <script>
-      async function query(data) {
-        // TODO: Replace YOUR_SPACE and YOUR_CHATFLOW_ID with your own values below
-        const response = await fetch(
-          "https://ralp123-flowise.hf.space/api/v1/prediction/d92c0dbd-4148-4cb7-b50f-1d3b511ec7b3",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-          }
-        );
-        const result = await response.json();
-        return result;
-      }
-      function renderMarkdown(md) {
-        let html = md
-          .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
-          .replace(/\*(.*?)\*/g, '<i>$1</i>')
-          .replace(/`([^`]+)`/g, '<code>$1</code>')
-          .replace(/\n/g, '<br>');
-        return html;
-      }
-      document.addEventListener('DOMContentLoaded', function() {
-        const form = document.getElementById('chat-form');
-        const input = document.getElementById('chat-input');
-        const messages = document.getElementById('chat-messages');
-        const errorDiv = document.getElementById('chat-error');
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          const userMsg = input.value.trim();
-          if (!userMsg) return;
-          messages.innerHTML += `<div class='chat-msg user'><b>You:</b> ${userMsg}</div>`;
-          input.value = '';
-          errorDiv.textContent = '';
-          try {
-            messages.innerHTML += `<div class='chat-msg bot' style='color:#888;'><img src="https://cdn-icons-png.flaticon.com/512/4712/4712139.png" width="20" height="20" style="vertical-align:middle;margin-right:0.5rem;"> TransportBot is typing...</div>`;
-            const response = await query({"question": userMsg});
-            let botMsg = response.text || JSON.stringify(response);
-            messages.innerHTML = messages.innerHTML.replace('TransportBot is typing...','');
-            messages.innerHTML += `<div class='chat-msg bot'><img src="https://cdn-icons-png.flaticon.com/512/4712/4712139.png" width="20" height="20" style="vertical-align:middle;margin-right:0.5rem;"><b>TransportBot:</b> ${renderMarkdown(botMsg)}</div>`;
-            messages.scrollTop = messages.scrollHeight;
-          } catch (err) {
-            errorDiv.textContent = 'Sorry, there was a problem contacting TransportBot.';
-          }
-        });
-      });
-    </script>
-  </main>
-  <footer style="margin-top:2.5rem;text-align:center;">
-    &copy; 2025 Find Your Vibe. Not a real service.
+    © 2025 Freesmart. Connecting communities intelligently.
   </footer>
 </body>
 </html>
