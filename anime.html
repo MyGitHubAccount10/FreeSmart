@@ -7,72 +7,170 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
   <style>
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(-10px); }
-      60% { transform: translateY(-5px); }
+    @keyframes sakuraFloat {
+      0% { transform: translateY(0px) rotateZ(0deg); opacity: 1; }
+      50% { transform: translateY(-20px) rotateZ(180deg); opacity: 0.7; }
+      100% { transform: translateY(0px) rotateZ(360deg); opacity: 1; }
     }
     
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.8; transform: scale(1.02); }
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(255, 182, 193, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(255, 182, 193, 0.6), 0 0 60px rgba(138, 43, 226, 0.3); }
     }
     
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
-    
-    @keyframes sparkle {
-      0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
-      50% { opacity: 0.7; transform: scale(1.1) rotate(180deg); }
-    }
-    
-    .chat-msg {
-      animation: slideIn 0.3s ease-out;
-    }
-    
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateY(10px); }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
     
-    button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 25px rgba(236, 72, 153, 0.4);
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
     }
     
-    input:focus {
-      outline: none;
-      border-color: rgba(236, 72, 153, 0.5);
-      box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
+    @keyframes typing {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
     }
     
-    .floating-emoji {
-      animation: float 3s ease-in-out infinite;
+    .chat-msg {
+      animation: slideUp 0.4s ease-out;
     }
     
-    .category-card:hover {
-      transform: rotate(0deg) scale(1.05);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    .hero-section {
+      background: linear-gradient(45deg, rgba(255, 182, 193, 0.9), rgba(138, 43, 226, 0.9)), 
+                  url('images/bgbright.webp') center/cover;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-content {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 25px;
+      padding: 3rem;
+      max-width: 800px;
+      margin: 0 auto;
+      animation: fadeInScale 1s ease-out;
+      border: 3px solid rgba(255, 182, 193, 0.5);
+    }
+    
+    .anime-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      border: 2px solid transparent;
+      position: relative;
+    }
+    
+    .anime-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(255, 182, 193, 0.8);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .anime-card::before {
+      content: '✨';
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      animation: sakuraFloat 3s ease-in-out infinite;
+    }
+    
+    .bot-introduction {
+      background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(255, 182, 193, 0.1));
+      border-radius: 25px;
+      padding: 2rem;
+      margin: 3rem 0;
+      border: 2px solid rgba(255, 182, 193, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .bot-introduction::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #ff69b4, #8a2be2, #ff1493);
+      animation: glow 2s ease-in-out infinite;
+    }
+    
+    .community-stats {
+      background: linear-gradient(45deg, rgba(138, 43, 226, 0.8), rgba(255, 20, 147, 0.8)), 
+                  url('images/bgdark.webp') center/cover;
+      color: white;
+      border-radius: 25px;
+      padding: 3rem 2rem;
+      margin: 3rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .community-stats::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+    
+    .community-stats > * {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .cosplay-section {
+      background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), 
+                  url('images/cosplay.png') center/cover;
+      border-radius: 25px;
+      padding: 3rem;
+      margin: 3rem 0;
+      border: 3px solid rgba(255, 182, 193, 0.4);
+    }
+    
+    .sakura {
+      position: absolute;
+      color: #ffb6c1;
+      font-size: 1.5rem;
+      animation: sakuraFloat 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+    
+    .chatbot-container {
+      background: rgba(30, 30, 60, 0.95);
+      backdrop-filter: blur(15px);
+      border-radius: 25px;
+      overflow: hidden;
+      border: 3px solid rgba(255, 182, 193, 0.4);
+      animation: glow 3s ease-in-out infinite;
     }
   </style>
 </head>
-<body style="background: linear-gradient(135deg, #ec4899, #8b5cf6, #06b6d4, #f59e0b, #ef4444, #10b981); background-size: 600% 600%; animation: gradientShift 10s ease infinite; min-height: 100vh;">
-  <style>
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-  </style>
+<body style="background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); min-height: 100vh; position: relative;">
+  <!-- Floating Sakura Petals -->
+  <div class="sakura" style="top: 10%; left: 5%; animation-delay: 0s;">🌸</div>
+  <div class="sakura" style="top: 20%; right: 10%; animation-delay: 1s;">🌺</div>
+  <div class="sakura" style="top: 60%; left: 8%; animation-delay: 2s;">🌸</div>
+  <div class="sakura" style="top: 80%; right: 15%; animation-delay: 3s;">🌺</div>
+  
   <div id="navbar"></div>
   <script>
     fetch('navbar.html')
       .then(res => res.text())
       .then(html => {
         document.getElementById('navbar').innerHTML = html;
-        // Highlight the current tab based on the page
         const navMap = {
           'index.html': 'nav-home',
           'faq.html': 'nav-faq',
@@ -88,92 +186,178 @@
         if (activeLink) activeLink.classList.add('active-tab');
       });
   </script>
-  <main>
-    <div>
-      <h1 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(135deg, #ec4899, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">🌸 Anime Community 🌸</h1>
-      <p style="text-align: center; font-size: 1.2rem; max-width: 800px; margin: 0 auto 2rem auto; color: #475569; line-height: 1.7;">Welcome to the otaku paradise! ✨ Connect with fellow anime enthusiasts, discuss your favorite series, share recommendations, and dive deep into the rich world of Japanese animation. From timeless classics to the hottest seasonal releases - your anime journey starts here! 🚀</p>
-      
-      <!-- ChatBot Section - AniBot -->
-      <section id="chatbot-section" style="background: linear-gradient(135deg, #1e293b, #334155); border-radius: 20px; padding: 2rem; margin: 3rem 0; color: white; box-shadow: 0 20px 40px rgba(30, 41, 59, 0.3); border: 2px solid #475569;">
-        <h3 style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; font-size: 1.4rem; font-weight: 700;">
-          <img src="https://cdn-icons-png.flaticon.com/512/4712/4712139.png" alt="AniBot" class="chatbot-avatar" style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #ec4899, #8b5cf6); padding: 5px;"> 
-          <span>🌸 AniBot - Your Anime Sensei</span>
-        </h3>
-        <div style="background: rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 1rem; margin-bottom: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.2);">
-          <p style="margin: 0; font-size: 1rem; opacity: 0.9; line-height: 1.6;">
-            <strong>Konnichiwa! Ask me anything!</strong> 🤖✨<br>
-            • Anime recommendations based on your taste<br>
-            • Character analysis and plot discussions<br>
-            • Find local anime clubs and events<br>
-            • Manga suggestions and where to read them 📚
-          </p>
+
+  <!-- Hero Section with Anime Background -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <h1 style="text-align: center; font-size: 3rem; margin-bottom: 1rem; background: linear-gradient(135deg, #ff1493, #8a2be2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">
+          🌸 Welcome to Anime Paradise 🌸
+        </h1>
+        <p style="text-align: center; font-size: 1.3rem; color: #444; line-height: 1.8; margin-bottom: 2rem;">
+          Dive into the magical world of anime! Connect with fellow otakus, discover new series, share your passion, and create lasting friendships in our vibrant community.
+        </p>
+        <div style="text-align: center;">
+          <img src="images/avatar.png" alt="Anime Character" style="width: 120px; height: 120px; border-radius: 50%; border: 4px solid #ff69b4; box-shadow: 0 8px 25px rgba(255, 105, 180, 0.4); margin-bottom: 1rem;">
+          <p style="font-size: 1.1rem; color: #666; font-style: italic;">Join thousands of anime fans worldwide!</p>
         </div>
-        <div id="chat-messages" style="background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 1rem; min-height: 120px; margin-bottom: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1); max-height: 300px; overflow-y: auto;"></div>
-        <!-- Enhanced Chat Input Section -->
-        <div style="background: linear-gradient(135deg, #ec4899, #8b5cf6); padding: 3px; border-radius: 30px; margin-bottom: 1rem; box-shadow: 0 0 30px rgba(236, 72, 153, 0.4); animation: pulse 3s infinite;">
-          <div style="background: rgba(30, 41, 59, 0.95); border-radius: 27px; padding: 1rem;">
-            <div style="text-align: center; margin-bottom: 0.8rem; font-size: 0.9rem; color: #ec4899; font-weight: 600;">
-              💬 Ask AniBot anything! Type below ⬇️
+      </div>
+    </div>
+  </section>
+
+  <main style="padding: 2rem;">
+    <div class="container">
+      
+      <!-- AniBot Introduction Section -->
+      <section class="bot-introduction">
+        <div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 300px;">
+            <h2 style="color: #8a2be2; font-size: 2.2rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;">
+              <img src="images/me.png" alt="AniBot Creator" style="width: 60px; height: 60px; border-radius: 50%; border: 3px solid #ff69b4;">
+              Meet AniBot! 🤖✨
+            </h2>
+            <p style="font-size: 1.2rem; line-height: 1.7; color: #555; margin-bottom: 1.5rem;">
+              <strong>Konnichiwa!</strong> I'm AniBot, your personal anime sensei created by our community founder. I'm here to help you discover amazing anime, connect with fellow otakus, and navigate the wonderful world of Japanese animation!
+            </p>
+            <div style="background: rgba(255, 182, 193, 0.2); padding: 1.5rem; border-radius: 15px; border-left: 5px solid #ff69b4;">
+              <h4 style="color: #8a2be2; margin-bottom: 1rem;">🎌 What I can help you with:</h4>
+              <ul style="list-style: none; padding: 0; color: #666;">
+                <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                  <span style="color: #ff69b4;">🎬</span> Personalized anime recommendations
+                </li>
+                <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                  <span style="color: #ff69b4;">📚</span> Manga and light novel suggestions
+                </li>
+                <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                  <span style="color: #ff69b4;">👥</span> Finding local anime communities
+                </li>
+                <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                  <span style="color: #ff69b4;">🎭</span> Cosplay tips and event information
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div style="flex: 0 0 300px; text-align: center;">
+            <img src="images/avatar.png" alt="AniBot Avatar" style="width: 200px; height: 200px; border-radius: 50%; border: 5px solid #ff69b4; box-shadow: 0 15px 35px rgba(255, 105, 180, 0.3); animation: glow 3s ease-in-out infinite;">
+          </div>
+        </div>
+      </section>
+
+      <!-- AniBot Chat Interface -->
+      <section class="chatbot-container" style="padding: 2.5rem; margin: 3rem 0; color: white;">
+        <h3 style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; font-size: 1.5rem; font-weight: 700; color: #ffb6c1;">
+          <img src="images/me.png" alt="AniBot" style="width: 50px; height: 50px; border-radius: 50%; border: 3px solid #ff69b4;"> 
+          <span>💬 Chat with AniBot</span>
+        </h3>
+        <div id="chat-messages" style="background: rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 1.5rem; min-height: 150px; margin-bottom: 1.5rem; border: 2px solid rgba(255, 182, 193, 0.3); max-height: 400px; overflow-y: auto;"></div>
+        
+        <div style="background: linear-gradient(135deg, #ff69b4, #8a2be2); padding: 4px; border-radius: 25px; margin-bottom: 1rem;">
+          <div style="background: rgba(30, 30, 60, 0.95); border-radius: 21px; padding: 1.5rem;">
+            <div style="text-align: center; margin-bottom: 1rem; font-size: 1rem; color: #ffb6c1; font-weight: 600;">
+              ✨ Ask AniBot anything about anime! ✨
             </div>
             <form id="chat-form" style="display: flex; gap: 1rem; align-items: center;">
-              <input id="chat-input" type="text" placeholder="Type your question... (e.g., 'What anime should I watch next?')" style="flex: 1; padding: 1rem 1.5rem; border: 3px solid #ec4899; border-radius: 25px; background: rgba(255, 255, 255, 0.95); color: #1e293b; font-size: 1.1rem; font-weight: 500; box-shadow: 0 0 20px rgba(236, 72, 153, 0.3); transition: all 0.3s ease;" required />
-              <button type="submit" style="background: linear-gradient(135deg, #ec4899, #8b5cf6); color: white; border: none; padding: 1rem 2rem; border-radius: 25px; font-weight: 700; cursor: pointer; transition: all 0.3s ease; font-size: 1.1rem; box-shadow: 0 5px 15px rgba(236, 72, 153, 0.4); animation: float 2s ease-in-out infinite;">
+              <input id="chat-input" type="text" placeholder="Ask me about anime, manga, or find your next series..." style="flex: 1; padding: 1.2rem 1.5rem; border: 3px solid #ff69b4; border-radius: 25px; background: rgba(255, 255, 255, 0.95); color: #333; font-size: 1.1rem; font-weight: 500;" required />
+              <button type="submit" style="background: linear-gradient(135deg, #ff69b4, #8a2be2); color: white; border: none; padding: 1.2rem 2rem; border-radius: 25px; font-weight: 700; cursor: pointer; font-size: 1.1rem; transition: all 0.3s ease;">
                 Send 🚀
               </button>
             </form>
           </div>
         </div>
-        <div id="chat-error" style="color: #fca5a5; font-size: 0.95rem; margin-top: 1rem; padding: 0.5rem; border-radius: 8px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); display: none;"></div>
+        <div id="chat-error" style="color: #ffb6c1; font-size: 0.95rem; margin-top: 1rem; padding: 0.8rem; border-radius: 10px; background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.4); display: none;"></div>
       </section>
+
+      <!-- Anime Categories with unique design -->
+      <h2 style="text-align: center; font-size: 2.5rem; margin: 4rem 0 2rem 0; background: linear-gradient(135deg, #ff1493, #8a2be2); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        🎌 Explore Our Community 🎌
+      </h2>
       
-      <!-- Featured Anime Categories -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin: 3rem 0;">
-        <div class="category-card" style="background: linear-gradient(135deg, #fdf2f8, #fbcfe8); border: 2px solid #ec4899; border-radius: 20px; padding: 2rem; text-align: center; transition: all 0.3s ease; cursor: pointer; transform: rotate(1deg);">
-          <div style="font-size: 3rem; margin-bottom: 1rem; animation: bounce 2s infinite;">🎬</div>
-          <h3 style="color: #be185d; margin-bottom: 0.8rem; font-size: 1.3rem; font-weight: 700;">Seasonal Anime</h3>
-          <p style="color: #db2777; font-size: 1rem; line-height: 1.6;">Latest releases, seasonal discussions, episode reviews, and trending series. Stay up-to-date with what's hot!</p>
-          <div style="margin-top: 1rem; font-size: 0.9rem; color: #ec4899; font-weight: 600;">Popular: Demon Slayer, Chainsaw Man, Spy x Family</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin: 3rem 0;">
+        <div class="anime-card" style="padding: 2rem; text-align: center;">
+          <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, #ff69b4, #ff1493); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">🎬</div>
+          <h3 style="color: #8a2be2; margin-bottom: 1rem; font-size: 1.4rem; font-weight: 700;">Seasonal Anime Hub</h3>
+          <p style="color: #666; font-size: 1.1rem; line-height: 1.6; margin-bottom: 1rem;">Stay up-to-date with the latest releases, seasonal discussions, and trending series. Never miss the next big hit!</p>
+          <div style="background: rgba(255, 105, 180, 0.1); padding: 1rem; border-radius: 10px; border-left: 4px solid #ff69b4;">
+            <strong style="color: #ff1493;">Hot This Season:</strong> Demon Slayer, Chainsaw Man, Spy x Family
+          </div>
         </div>
         
-        <div class="category-card" style="background: linear-gradient(135deg, #f3e8ff, #ddd6fe); border: 2px solid #8b5cf6; border-radius: 20px; padding: 2rem; text-align: center; transition: all 0.3s ease; cursor: pointer; transform: rotate(-1deg);">
-          <div style="font-size: 3rem; margin-bottom: 1rem; animation: bounce 2s infinite 0.5s;">📚</div>
-          <h3 style="color: #6b21a8; margin-bottom: 0.8rem; font-size: 1.3rem; font-weight: 700;">Manga & Light Novels</h3>
-          <p style="color: #7c3aed; font-size: 1rem; line-height: 1.6;">Source material discussions, recommendations, and adaptation comparisons. Dive deeper into the stories!</p>
-          <div style="margin-top: 1rem; font-size: 0.9rem; color: #8b5cf6; font-weight: 600;">Popular: One Piece, Attack on Titan, Jujutsu Kaisen</div>
+        <div class="anime-card" style="padding: 2rem; text-align: center;">
+          <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, #8a2be2, #9370db); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">📚</div>
+          <h3 style="color: #8a2be2; margin-bottom: 1rem; font-size: 1.4rem; font-weight: 700;">Manga & Light Novels</h3>
+          <p style="color: #666; font-size: 1.1rem; line-height: 1.6; margin-bottom: 1rem;">Dive deeper into stories with source material discussions, recommendations, and adaptation comparisons.</p>
+          <div style="background: rgba(138, 43, 226, 0.1); padding: 1rem; border-radius: 10px; border-left: 4px solid #8a2be2;">
+            <strong style="color: #8a2be2;">Must Read:</strong> One Piece, Attack on Titan, Jujutsu Kaisen
+          </div>
         </div>
         
-        <div class="category-card" style="background: linear-gradient(135deg, #ecfeff, #cffafe); border: 2px solid #06b6d4; border-radius: 20px; padding: 2rem; text-align: center; transition: all 0.3s ease; cursor: pointer; transform: rotate(1deg);">
-          <div style="font-size: 3rem; margin-bottom: 1rem; animation: bounce 2s infinite 1s;">🎭</div>
-          <h3 style="color: #0e7490; margin-bottom: 0.8rem; font-size: 1.3rem; font-weight: 700;">Cosplay & Fan Art</h3>
-          <p style="color: #0891b2; font-size: 1rem; line-height: 1.6;">Creative community, costume making, artwork sharing, and convention meetups. Express your creativity!</p>
-          <div style="margin-top: 1rem; font-size: 0.9rem; color: #06b6d4; font-weight: 600;">Upcoming: Comic Con 2025, AniMatsuri, Otakuthon</div>
+        <div class="anime-card" style="padding: 2rem; text-align: center;">
+          <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, #ff6347, #ff4500); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">🎭</div>
+          <h3 style="color: #8a2be2; margin-bottom: 1rem; font-size: 1.4rem; font-weight: 700;">Cosplay & Creativity</h3>
+          <p style="color: #666; font-size: 1.1rem; line-height: 1.6; margin-bottom: 1rem;">Express your creativity! Share costumes, artwork, and connect with fellow creators and convention-goers.</p>
+          <div style="background: rgba(255, 99, 71, 0.1); padding: 1rem; border-radius: 10px; border-left: 4px solid #ff6347;">
+            <strong style="color: #ff4500;">Next Events:</strong> Comic Con 2025, AniMatsuri, Otakuthon
+          </div>
         </div>
       </div>
 
-      <!-- Quick Stats Section -->
-      <div style="background: linear-gradient(135deg, #fef3c7, #fed7aa); border: 2px solid #f59e0b; border-radius: 20px; padding: 2rem; margin: 3rem 0; text-align: center;">
-        <h3 style="color: #92400e; margin-bottom: 1.5rem; font-size: 1.5rem;">📊 Otaku Community Stats</h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem;">
-          <div>
-            <div style="font-size: 2rem; font-weight: 700; color: #f59e0b; animation: sparkle 2s infinite;">2,847</div>
-            <div style="color: #92400e; font-size: 0.9rem;">Active Otakus</div>
+      <!-- Cosplay Community Showcase -->
+      <section class="cosplay-section">
+        <div style="display: flex; align-items: center; gap: 3rem; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 300px;">
+            <h2 style="color: #8a2be2; font-size: 2.3rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem;">
+              🎭 Cosplay Community 🎭
+            </h2>
+            <p style="font-size: 1.2rem; line-height: 1.7; color: #555; margin-bottom: 1.5rem;">
+              Our cosplay community is amazing! From beginners to professional cosplayers, everyone is welcome. Share your creations, get tips, and find your cosplay squad!
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+              <div style="text-align: center; padding: 1rem; background: rgba(255, 255, 255, 0.7); border-radius: 15px;">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">👗</div>
+                <strong style="color: #8a2be2;">Costume Making</strong>
+                <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0;">Learn techniques and share tips</p>
+              </div>
+              <div style="text-align: center; padding: 1rem; background: rgba(255, 255, 255, 0.7); border-radius: 15px;">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">📸</div>
+                <strong style="color: #8a2be2;">Photo Shoots</strong>
+                <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0;">Organize and join photo sessions</p>
+              </div>
+            </div>
           </div>
-          <div>
-            <div style="font-size: 2rem; font-weight: 700; color: #f59e0b; animation: sparkle 2s infinite 0.5s;">156</div>
-            <div style="color: #92400e; font-size: 0.9rem;">Anime Clubs</div>
-          </div>
-          <div>
-            <div style="font-size: 2rem; font-weight: 700; color: #f59e0b; animation: sparkle 2s infinite 1s;">1,234</div>
-            <div style="color: #92400e; font-size: 0.9rem;">Series Discussed</div>
-          </div>
-          <div>
-            <div style="font-size: 2rem; font-weight: 700; color: #f59e0b; animation: sparkle 2s infinite 1.5s;">47</div>
-            <div style="color: #92400e; font-size: 0.9rem;">Events This Month</div>
+          <div style="flex: 0 0 350px; text-align: center;">
+            <img src="images/cosplay.png" alt="Cosplay Community" style="width: 100%; max-width: 350px; border-radius: 20px; border: 4px solid #ff69b4; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);">
+            <p style="font-style: italic; color: #888; margin-top: 1rem;">Our amazing cosplay community in action!</p>
           </div>
         </div>
-      </div>
+      </section>
+
+      <!-- Community Stats with Anime Background -->
+      <section class="community-stats">
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+          📊 Our Thriving Otaku Community 📊
+        </h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center;">
+          <div style="background: rgba(255, 255, 255, 0.2); padding: 2rem; border-radius: 15px; backdrop-filter: blur(10px);">
+            <div style="font-size: 3rem; font-weight: 700; margin-bottom: 0.5rem; animation: sakuraFloat 2s ease-in-out infinite;">3,247</div>
+            <div style="font-size: 1.1rem; opacity: 0.9;">Active Otakus</div>
+          </div>
+          <div style="background: rgba(255, 255, 255, 0.2); padding: 2rem; border-radius: 15px; backdrop-filter: blur(10px);">
+            <div style="font-size: 3rem; font-weight: 700; margin-bottom: 0.5rem; animation: sakuraFloat 2s ease-in-out infinite 0.5s;">267</div>
+            <div style="font-size: 1.1rem; opacity: 0.9;">Anime Clubs</div>
+          </div>
+          <div style="background: rgba(255, 255, 255, 0.2); padding: 2rem; border-radius: 15px; backdrop-filter: blur(10px);">
+            <div style="font-size: 3rem; font-weight: 700; margin-bottom: 0.5rem; animation: sakuraFloat 2s ease-in-out infinite 1s;">1,856</div>
+            <div style="font-size: 1.1rem; opacity: 0.9;">Series Discussed</div>
+          </div>
+          <div style="background: rgba(255, 255, 255, 0.2); padding: 2rem; border-radius: 15px; backdrop-filter: blur(10px);">
+            <div style="font-size: 3rem; font-weight: 700; margin-bottom: 0.5rem; animation: sakuraFloat 2s ease-in-out infinite 1.5s;">89</div>
+            <div style="font-size: 1.1rem; opacity: 0.9;">Events This Month</div>
+          </div>
+        </div>
+      </section>
     </div>
   </main>
+  
   <script>
     async function query(data) {
       const response = await fetch(
@@ -194,7 +378,7 @@
       let html = md
         .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
         .replace(/\*(.*?)\*/g, '<i>$1</i>')
-        .replace(/`([^`]+)`/g, '<code>$1</code>')
+        .replace(/`([^`]+)`/g, '<code style="background: rgba(255, 105, 180, 0.2); padding: 2px 4px; border-radius: 4px;">$1</code>')
         .replace(/\n/g, '<br>');
       return html;
     }
@@ -205,15 +389,20 @@
       const messages = document.getElementById('chat-messages');
       const errorDiv = document.getElementById('chat-error');
       
-      // Add welcome message
+      // Add personalized welcome message with anime flair
       messages.innerHTML = `
-        <div class='chat-msg bot' style='background: rgba(236, 72, 153, 0.2); border-radius: 15px; padding: 1rem; margin-bottom: 1rem; border-left: 4px solid #ec4899;'>
-          <div style='display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;'>
-            <img src="https://cdn-icons-png.flaticon.com/512/4712/4712139.png" width="24" height="24" style="border-radius: 50%; background: linear-gradient(135deg, #ec4899, #8b5cf6); padding: 3px;">
-            <strong>AniBot</strong>
+        <div class='chat-msg bot' style='background: linear-gradient(135deg, rgba(255, 105, 180, 0.2), rgba(138, 43, 226, 0.2)); border-radius: 18px; padding: 1.5rem; margin-bottom: 1rem; border-left: 5px solid #ff69b4; border-right: 5px solid #8a2be2;'>
+          <div style='display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;'>
+            <img src="images/me.png" width="40" height="40" style="border-radius: 50%; border: 3px solid #ff69b4;">
+            <div>
+              <strong style="color: #ff69b4; font-size: 1.1rem;">AniBot</strong>
+              <div style="font-size: 0.8rem; color: #8a2be2; opacity: 0.8;">Your Anime Sensei</div>
+            </div>
           </div>
-          <div style='font-size: 1rem; line-height: 1.5;'>
-            Konnichiwa, fellow otaku! 🌸✨ I'm AniBot, your personal anime sensei! Ask me about anime recommendations, character discussions, manga suggestions, or finding anime communities near you. Let's explore the wonderful world of anime together! 🚀
+          <div style='font-size: 1.1rem; line-height: 1.6; color: #333;'>
+            <span style="font-size: 1.2rem;">🌸 Konnichiwa, fellow otaku!</span><br><br>
+            I'm AniBot, and I'm absolutely thrilled to meet you! ✨ Whether you're a seasoned anime veteran or just starting your journey into the wonderful world of Japanese animation, I'm here to help you discover amazing series, connect with the community, and make your anime experience even more magical!<br><br>
+            <strong style="color: #ff69b4;">What can I help you with today?</strong> 🎌
           </div>
         </div>
       `;
@@ -223,14 +412,17 @@
         const userMsg = input.value.trim();
         if (!userMsg) return;
 
-        // Add user message with better styling
+        // Add user message with anime-themed styling
         messages.innerHTML += `
-          <div class='chat-msg user' style='background: rgba(139, 92, 246, 0.2); border-radius: 15px; padding: 1rem; margin-bottom: 1rem; border-left: 4px solid #8b5cf6; text-align: right; color: #1e293b;'>
-            <div style='display: flex; align-items: center; gap: 0.5rem; justify-content: flex-end; margin-bottom: 0.5rem;'>
-              <strong style='color: #1e293b;'>You</strong>
-              <div style='width: 24px; height: 24px; border-radius: 50%; background: linear-gradient(135deg, #8b5cf6, #ec4899); display: flex; align-items: center; justify-content: center; font-size: 12px;'>🎌</div>
+          <div class='chat-msg user' style='background: linear-gradient(135deg, rgba(138, 43, 226, 0.15), rgba(255, 20, 147, 0.15)); border-radius: 18px; padding: 1.5rem; margin-bottom: 1rem; border-left: 5px solid #8a2be2; text-align: right;'>
+            <div style='display: flex; align-items: center; gap: 1rem; justify-content: flex-end; margin-bottom: 1rem;'>
+              <div style="text-align: right;">
+                <strong style='color: #8a2be2; font-size: 1.1rem;'>You</strong>
+                <div style="font-size: 0.8rem; color: #ff1493; opacity: 0.8;">Otaku Friend</div>
+              </div>
+              <div style='width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #8a2be2, #ff69b4); display: flex; align-items: center; justify-content: center; font-size: 18px; border: 3px solid #ff69b4;'>🎌</div>
             </div>
-            <div style='font-size: 1rem; line-height: 1.5; color: #1e293b;'>${userMsg}</div>
+            <div style='font-size: 1.1rem; line-height: 1.6; color: #333; text-align: right;'>${userMsg}</div>
           </div>
         `;
         
@@ -238,16 +430,20 @@
         errorDiv.style.display = 'none';
 
         try {
-          // Add typing indicator with anime flair
+          // Add anime-themed typing indicator
           const typingId = Date.now();
           messages.innerHTML += `
-            <div class='chat-msg bot typing-${typingId}' style='background: rgba(236, 72, 153, 0.2); border-radius: 15px; padding: 1rem; margin-bottom: 1rem; border-left: 4px solid #ec4899; opacity: 0.7;'>
-              <div style='display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;'>
-                <img src="https://cdn-icons-png.flaticon.com/512/4712/4712139.png" width="24" height="24" style="border-radius: 50%; background: linear-gradient(135deg, #ec4899, #8b5cf6); padding: 3px;">
-                <strong>AniBot</strong>
+            <div class='chat-msg bot typing-${typingId}' style='background: linear-gradient(135deg, rgba(255, 105, 180, 0.15), rgba(138, 43, 226, 0.15)); border-radius: 18px; padding: 1.5rem; margin-bottom: 1rem; border-left: 5px solid #ff69b4; opacity: 0.8;'>
+              <div style='display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;'>
+                <img src="images/me.png" width="40" height="40" style="border-radius: 50%; border: 3px solid #ff69b4;">
+                <div>
+                  <strong style="color: #ff69b4; font-size: 1.1rem;">AniBot</strong>
+                  <div style="font-size: 0.8rem; color: #8a2be2; opacity: 0.8;">Thinking...</div>
+                </div>
               </div>
-              <div style='font-size: 1rem; line-height: 1.5;'>
-                <span style='animation: pulse 1.5s infinite;'>🤔 Thinking...</span> Let me check my anime database! ✨📚
+              <div style='font-size: 1.1rem; line-height: 1.6; color: #666;'>
+                <span style='animation: typing 1.5s infinite;'>🤔 Let me check my anime database...</span> 
+                <span style="color: #ff69b4;">✨📚🎌</span>
               </div>
             </div>
           `;
@@ -263,14 +459,17 @@
             typingElement.remove();
           }
           
-          // Add bot response with enhanced styling
+          // Add bot response with enhanced anime styling
           messages.innerHTML += `
-            <div class='chat-msg bot' style='background: rgba(236, 72, 153, 0.2); border-radius: 15px; padding: 1rem; margin-bottom: 1rem; border-left: 4px solid #ec4899;'>
-              <div style='display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;'>
-                <img src="https://cdn-icons-png.flaticon.com/512/4712/4712139.png" width="24" height="24" style="border-radius: 50%; background: linear-gradient(135deg, #ec4899, #8b5cf6); padding: 3px;">
-                <strong>AniBot</strong>
+            <div class='chat-msg bot' style='background: linear-gradient(135deg, rgba(255, 105, 180, 0.2), rgba(138, 43, 226, 0.2)); border-radius: 18px; padding: 1.5rem; margin-bottom: 1rem; border-left: 5px solid #ff69b4; border-right: 5px solid #8a2be2;'>
+              <div style='display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;'>
+                <img src="images/me.png" width="40" height="40" style="border-radius: 50%; border: 3px solid #ff69b4;">
+                <div>
+                  <strong style="color: #ff69b4; font-size: 1.1rem;">AniBot</strong>
+                  <div style="font-size: 0.8rem; color: #8a2be2; opacity: 0.8;">Your Anime Sensei</div>
+                </div>
               </div>
-              <div style='font-size: 1rem; line-height: 1.5;'>${renderMarkdown(botMsg)}</div>
+              <div style='font-size: 1.1rem; line-height: 1.6; color: #333;'>${renderMarkdown(botMsg)}</div>
             </div>
           `;
           
@@ -282,57 +481,116 @@
             typingElement.remove();
           }
           
-          errorDiv.textContent = '😅 Gomen! AniBot is having a moment. Please try again in a sec!';
+          errorDiv.innerHTML = '😅 <strong>Gomen nasai!</strong> AniBot is having a moment. The server might be busy watching anime! Please try again in a moment! 🌸';
           errorDiv.style.display = 'block';
         }
       });
 
-      // Add some anime-themed placeholder suggestions
+      // Add anime-themed placeholder suggestions with rotation
       const suggestions = [
         "What anime should I watch next?",
-        "Recommend some romance anime",
+        "Recommend some slice-of-life anime",
         "Best action anime for beginners",
-        "Find anime clubs near me"
+        "Find anime clubs near me",
+        "Latest seasonal anime reviews",
+        "Romance anime recommendations",
+        "Underrated manga series",
+        "Cosplay tips for beginners"
       ];
       
+      let suggestionIndex = 0;
       input.addEventListener('focus', function() {
         if (!input.value) {
-          const randomSuggestion = suggestions[Math.floor(Math.random() * suggestions.length)];
-          input.placeholder = `Try: "${randomSuggestion}"`;
+          input.placeholder = `Ask me: "${suggestions[suggestionIndex]}"`;
+          suggestionIndex = (suggestionIndex + 1) % suggestions.length;
         }
+      });
+
+      // Add subtle hover effects for anime cards
+      document.querySelectorAll('.anime-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-8px) scale(1.02)';
+          this.style.boxShadow = '0 25px 50px rgba(255, 105, 180, 0.3)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0) scale(1)';
+          this.style.boxShadow = 'none';
+        });
       });
     });
   </script>
   
-  <!-- Anime Tips Section -->
-  <div style="background: linear-gradient(135deg, #fef2f2, #fecaca); border-radius: 20px; padding: 2rem; margin: 3rem 0; text-align: center; border: 2px solid #ef4444;">
-    <h3 style="color: #991b1b; margin-bottom: 1.5rem; font-size: 1.4rem; font-weight: 700;">🌸 Otaku Pro Tips 🌸</h3>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; text-align: left;">
-      <div style="background: rgba(255, 255, 255, 0.7); padding: 1.2rem; border-radius: 15px; border: 1px solid rgba(239, 68, 68, 0.3);">
-        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">💝</div>
-        <h4 style="color: #991b1b; font-size: 1.1rem; margin-bottom: 0.5rem;">Discover Hidden Gems</h4>
-        <p style="color: #dc2626; font-size: 0.95rem; line-height: 1.5;">Don't just watch mainstream anime! Explore different genres and time periods to find your perfect series.</p>
+  <!-- Anime Pro Tips Section -->
+  <div style="background: linear-gradient(135deg, rgba(255, 182, 193, 0.9), rgba(255, 255, 255, 0.9)); border-radius: 25px; padding: 3rem; margin: 4rem 0; border: 3px solid rgba(255, 105, 180, 0.4); position: relative; overflow: hidden;">
+    <div style="position: absolute; top: 20px; right: 30px; font-size: 2rem; animation: sakuraFloat 4s ease-in-out infinite;">🌸</div>
+    <div style="position: absolute; bottom: 20px; left: 30px; font-size: 2rem; animation: sakuraFloat 4s ease-in-out infinite 2s;">🌺</div>
+    
+    <h3 style="color: #8a2be2; margin-bottom: 2rem; font-size: 2.2rem; font-weight: 700; text-align: center;">🌸 Otaku Wisdom & Tips 🌸</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+      <div style="background: rgba(255, 255, 255, 0.8); padding: 2rem; border-radius: 20px; border: 2px solid rgba(255, 105, 180, 0.3); backdrop-filter: blur(5px);">
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+          <div style="font-size: 2.5rem;">💝</div>
+          <h4 style="color: #8a2be2; font-size: 1.3rem; margin: 0;">Discover Hidden Gems</h4>
+        </div>
+        <p style="color: #555; font-size: 1rem; line-height: 1.6; margin: 0;">Don't just stick to mainstream anime! Explore different genres, time periods, and studios. Some of the most amazing stories are waiting to be discovered in lesser-known series.</p>
       </div>
-      <div style="background: rgba(255, 255, 255, 0.7); padding: 1.2rem; border-radius: 15px; border: 1px solid rgba(239, 68, 68, 0.3);">
-        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">👥</div>
-        <h4 style="color: #991b1b; font-size: 1.1rem; margin-bottom: 0.5rem;">Join the Community</h4>
-        <p style="color: #dc2626; font-size: 0.95rem; line-height: 1.5;">Anime is better with friends! Join clubs, attend conventions, and share your passion with fellow otakus.</p>
+      
+      <div style="background: rgba(255, 255, 255, 0.8); padding: 2rem; border-radius: 20px; border: 2px solid rgba(255, 105, 180, 0.3); backdrop-filter: blur(5px);">
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+          <div style="font-size: 2.5rem;">👥</div>
+          <h4 style="color: #8a2be2; font-size: 1.3rem; margin: 0;">Join the Community</h4>
+        </div>
+        <p style="color: #555; font-size: 1rem; line-height: 1.6; margin: 0;">Anime is best enjoyed with friends! Join clubs, attend conventions, participate in online discussions, and share your passion with fellow otakus. The community makes the journey magical!</p>
       </div>
-      <div style="background: rgba(255, 255, 255, 0.7); padding: 1.2rem; border-radius: 15px; border: 1px solid rgba(239, 68, 68, 0.3);">
-        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📖</div>
-        <h4 style="color: #991b1b; font-size: 1.1rem; margin-bottom: 0.5rem;">Read the Source</h4>
-        <p style="color: #dc2626; font-size: 0.95rem; line-height: 1.5;">Love an anime? Check out the manga or light novel! You'll often get deeper stories and character development.</p>
+      
+      <div style="background: rgba(255, 255, 255, 0.8); padding: 2rem; border-radius: 20px; border: 2px solid rgba(255, 105, 180, 0.3); backdrop-filter: blur(5px);">
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+          <div style="font-size: 2.5rem;">📖</div>
+          <h4 style="color: #8a2be2; font-size: 1.3rem; margin: 0;">Read the Source Material</h4>
+        </div>
+        <p style="color: #555; font-size: 1rem; line-height: 1.6; margin: 0;">Love an anime? Check out the manga or light novel! You'll often get deeper character development, additional storylines, and sometimes different endings. It's like getting bonus content!</p>
       </div>
     </div>
   </div>
   
-  <footer style="text-align: center; margin-top: 3rem; padding: 2rem; background: linear-gradient(135deg, #1e293b, #334155); color: white; border-radius: 20px;">
-    <div style="font-size: 1.2rem; margin-bottom: 1rem;">🌸 Ready to Dive into Anime? 🌸</div>
-    <div style="font-size: 0.95rem; opacity: 0.8;">
-      &copy; 2025 Freesmart. Connecting anime communities intelligently.
+  <footer style="background: linear-gradient(135deg, #1a1a2e, #16213e); color: white; border-radius: 25px; padding: 3rem 2rem; margin-top: 4rem; text-align: center; position: relative; overflow: hidden;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #ff69b4, #8a2be2, #ff1493, #8a2be2, #ff69b4); animation: glow 3s ease-in-out infinite;"></div>
+    
+    <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
+      <img src="images/avatar.png" alt="Anime Community" style="width: 60px; height: 60px; border-radius: 50%; border: 3px solid #ff69b4;">
+      <div>
+        <div style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">🌸 Ready to Start Your Anime Journey? 🌸</div>
+        <div style="font-size: 1rem; opacity: 0.8;">Join thousands of anime fans and discover your next favorite series!</div>
+      </div>
     </div>
-    <div style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.6;">
-      Stay kawaii and keep watching! ✨🎌
+    
+    <div style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap;">
+      <div style="text-align: center;">
+        <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">🎬</div>
+        <div style="font-size: 0.9rem; opacity: 0.7;">Watch Together</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">💬</div>
+        <div style="font-size: 0.9rem; opacity: 0.7;">Discuss & Share</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">🎭</div>
+        <div style="font-size: 0.9rem; opacity: 0.7;">Create & Cosplay</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="font-size: 1.8rem; margin-bottom: 0.5rem;">🌟</div>
+        <div style="font-size: 0.9rem; opacity: 0.7;">Discover Magic</div>
+      </div>
+    </div>
+    
+    <div style="border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: 2rem; opacity: 0.8;">
+      <div style="font-size: 1rem; margin-bottom: 0.5rem;">
+        &copy; 2025 Freesmart. Connecting anime communities with intelligence and passion.
+      </div>
+      <div style="font-size: 0.9rem; opacity: 0.6;">
+        Stay kawaii, keep watching, and remember - <em>"The journey is more beautiful when shared!"</em> ✨🎌
+      </div>
     </div>
   </footer>
 </body>
