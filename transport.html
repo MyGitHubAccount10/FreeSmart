@@ -6,6 +6,58 @@
   <title>Transport Enthusiasts | Freesmart</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+  <style>
+    /* --- Carousel Styles --- */
+    .carousel-container {
+      width: 100%;
+      height: 140px; /* Adjust height as needed */
+      overflow: hidden;
+      border-radius: 8px; /* Rounded corners for the image container */
+      margin-bottom: 1rem; /* Preserves original spacing */
+      background-color: #e2e8f0; /* Placeholder color while images load */
+    }
+    .carousel-slide {
+      display: flex;
+      width: 600%; /* 600% for 6 images (5 original + 1 clone) */
+      height: 100%;
+      /* Animation is applied to all slides */
+      animation: slide-seamless 25s ease-in-out infinite; 
+    }
+    .carousel-slide img {
+      width: 16.6667%; /* 100% / 6 images */
+      height: 100%;
+      object-fit: cover; /* Ensures images fill the container without distortion */
+    }
+    
+    /* Keyframe animation for the perfect seamless loop */
+    @keyframes slide-seamless {
+      0%, 16% { transform: translateX(0%); }
+      20%, 36% { transform: translateX(-16.6667%); }
+      40%, 56% { transform: translateX(-33.3334%); }
+      60%, 76% { transform: translateX(-50%); }
+      80%, 96% { transform: translateX(-66.6667%); }
+      100% { transform: translateX(-83.3335%); }
+    }
+
+    /* --- ADDED: Staggering the animations for a dynamic feel --- */
+    .transport-grid .transport-card:nth-child(1) .carousel-slide { animation-delay: 0s; }
+    .transport-grid .transport-card:nth-child(2) .carousel-slide { animation-delay: -5s; }
+    .transport-grid .transport-card:nth-child(3) .carousel-slide { animation-delay: -10s; }
+    .transport-grid .transport-card:nth-child(4) .carousel-slide { animation-delay: -3s; }
+    .transport-grid .transport-card:nth-child(5) .carousel-slide { animation-delay: -8s; }
+    .transport-grid .transport-card:nth-child(6) .carousel-slide { animation-delay: -12s; }
+    .transport-grid .transport-card:nth-child(7) .carousel-slide { animation-delay: -6s; }
+    
+    /* --- ADDED: Card hover effect --- */
+    .transport-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .transport-card:hover {
+      cursor: pointer;
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(45, 55, 72, 0.12), 0 4px 6px rgba(45, 55, 72, 0.1);
+    }
+  </style>
 </head>
 <body class="transport-theme-page">
   <div id="navbar"></div>
@@ -36,7 +88,6 @@
       <h1>Transport Enthusiasts</h1>
       <p>All aboard! Connect with fellow transport lovers who share your passion for everything that moves. From vintage trains to modern metros, classic buses to cutting-edge aviation - find your transport tribe!</p>
       
-      <!-- Chatbot Section (Moved Up) -->
       <section id="chatbot-section">
         <h3 style="margin-bottom:1rem;display:flex;align-items:center;gap:1rem;">
           <img src="https://cdn-icons-png.flaticon.com/512/4712/4712139.png" alt="Transport AI" class="chatbot-avatar"> Transport Group Finder AI Assistant
@@ -49,16 +100,14 @@
         <div id="chat-error" style="color:#ef4444;font-size:0.95rem;margin-top:0.5rem;"></div>
       </section>
 
-      <!-- Chatbot Script -->
       <script>
+        // Chatbot JS remains the same...
         async function query(data) {
           const response = await fetch(
             "https://ralp123-flowise.hf.space/api/v1/prediction/d92c0dbd-4148-4cb7-b50f-1d3b511ec7b3",
             {
               method: "POST",
-              headers: {
-                "Content-Type": "application/json"
-              },
+              headers: { "Content-Type": "application/json" },
               body: JSON.stringify(data)
             }
           );
@@ -106,53 +155,123 @@
         });
       </script>
 
-      <!-- New Header for Transport Categories -->
       <h2 style="text-align: center; margin-top: 3rem;">Transport Group Categories</h2>
 
-      <!-- Transport Categories -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2.5rem 0;">
+      <!-- Added class="transport-grid" to this container -->
+      <div class="transport-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2.5rem 0;">
+        
         <!-- Railways -->
-        <div style="background: linear-gradient(135deg, #f8fafc, #e2e8f0); border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🚂</div>
+        <div class="transport-card" style="background: linear-gradient(135deg, #f8fafc, #e2e8f0); border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; text-align: center;">
+          <div class="carousel-container">
+            <div class="carousel-slide">
+              <img src="images/train1.jpg" alt="Singapore MRT Train">
+              <img src="images/train2.jpg" alt="Singapore MRT Train">
+              <img src="images/train3.jpg" alt="Singapore MRT Train">
+              <img src="images/train4.jpg" alt="Singapore MRT Train">
+              <img src="images/train5.jpg" alt="Singapore MRT Train">
+              <img src="images/train1.jpg" alt="Singapore MRT Train">
+            </div>
+          </div>
           <h3 style="color: #1e293b; margin-bottom: 0.5rem;">Railways</h3>
           <p style="color: #64748b; font-size: 0.95rem;">Exploring the engineering, history, and future of Singapore's MRT and LRT systems. For fans of trains, subways, and light rail.</p>
         </div>
+
         <!-- Bus -->
-        <div style="background: linear-gradient(135deg, #f8fafc, #e2e8f0); border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🚌</div>
+        <div class="transport-card" style="background: linear-gradient(135deg, #f8fafc, #e2e8f0); border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; text-align: center;">
+          <div class="carousel-container">
+            <div class="carousel-slide">
+              <img src="images/bus1.jpg" alt="Singapore Bus">
+              <img src="images/bus2.jpg" alt="Singapore Bus">
+              <img src="images/bus3.jpg" alt="Singapore Bus">
+              <img src="images/bus4.jpg" alt="Singapore Bus">
+              <img src="images/bus5.jpg" alt="Singapore Bus">
+              <img src="images/bus1.jpg" alt="Singapore Bus">
+            </div>
+          </div>
           <h3 style="color: #1e293b; margin-bottom: 0.5rem;">Bus Systems</h3>
           <p style="color: #64748b; font-size: 0.95rem;">For fans of Singapore's public buses, from new models to operational details. Spotting, documentation, and bus interchange meetups.</p>
         </div>
+
         <!-- Planes -->
-        <div style="background: linear-gradient(135deg, #f8fafc, #e2e8f0); border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-          <div style="font-size: 2.5rem; margin-bottom: 1rem;">✈️</div>
+        <div class="transport-card" style="background: linear-gradient(135deg, #f8fafc, #e2e8f0); border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; text-align: center;">
+          <div class="carousel-container">
+            <div class="carousel-slide">
+              <img src="images/plane1.jpg" alt="Commercial Aircraft">
+              <img src="images/plane2.jpg" alt="Commercial Aircraft">
+              <img src="images/plane3.jpg" alt="Commercial Aircraft">
+              <img src="images/plane4.jpg" alt="Commercial Aircraft">
+              <img src="images/plane5.jpg" alt="Commercial Aircraft">
+              <img src="images/plane1.jpg" alt="Commercial Aircraft">
+            </div>
+          </div>
           <h3 style="color: #1e293b; margin-bottom: 0.5rem;">Planes & Aviation</h3>
           <p style="color: #64748b; font-size: 0.95rem;">A community for spotting and photographing commercial aircraft at Changi Airport, and for RSAF and military aviation fans.</p>
         </div>
+
         <!-- Cars -->
-        <div style="background: linear-gradient(135deg, #f8fafc, #e2e8f0); border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🚗</div>
+        <div class="transport-card" style="background: linear-gradient(135deg, #f8fafc, #e2e8f0); border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; text-align: center;">
+          <div class="carousel-container">
+            <div class="carousel-slide">
+              <img src="images/car1.jpg" alt="Exotic Car">
+              <img src="images/car2.jpg" alt="Exotic Car">
+              <img src="images/car3.jpg" alt="Exotic Car">
+              <img src="images/car4.jpg" alt="Exotic Car">
+              <img src="images/car5.jpg" alt="Exotic Car">
+              <img src="images/car1.jpg" alt="Exotic Car">
+            </div>
+          </div>
           <h3 style="color: #1e293b; margin-bottom: 0.5rem;">Cars</h3>
           <p style="color: #64748b; font-size: 0.95rem;">From supercars and JDM legends to classic and vintage vehicles. For spotters, history buffs, and restoration fans in Singapore.</p>
         </div>
+
         <!-- Ships -->
-        <div style="background: linear-gradient(135deg, #f8fafc, #e2e8f0); border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🚢</div>
+        <div class="transport-card" style="background: linear-gradient(135deg, #f8fafc, #e2e8f0); border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; text-align: center;">
+          <div class="carousel-container">
+            <div class="carousel-slide">
+              <img src="images/ship1.jpg" alt="Maritime Ship">
+              <img src="images/ship2.jpg" alt="Maritime Ship">
+              <img src="images/ship3.jpg" alt="Maritime Ship">
+              <img src="images/ship4.jpg" alt="Maritime Ship">
+              <img src="images/ship5.jpg" alt="Maritime Ship">
+              <img src="images/ship1.jpg" alt="Maritime Ship">
+            </div>
+          </div>
           <h3 style="color: #1e293b; margin-bottom: 0.5rem;">Ships & Maritime</h3>
           <p style="color: #64748b; font-size: 0.95rem;">Enthusiasts who spot and identify ships in Singapore's busy port, from tankers to ferries. Maritime history and port activity.</p>
         </div>
+
         <!-- Trucks -->
-        <div style="background: linear-gradient(135deg, #f8fafc, #e2e8f0); border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🚚</div>
+        <div class="transport-card" style="background: linear-gradient(135deg, #f8fafc, #e2e8f0); border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; text-align: center;">
+          <div class="carousel-container">
+            <div class="carousel-slide">
+              <img src="images/truck1.jpg" alt="Heavy Vehicle">
+              <img src="images/truck2.jpg" alt="Heavy Vehicle">
+              <img src="images/truck3.jpg" alt="Heavy Vehicle">
+              <img src="images/truck4.jpg" alt="Heavy Vehicle">
+              <img src="images/truck5.jpg" alt="Heavy Vehicle">
+              <img src="images/truck1.jpg" alt="Heavy Vehicle">
+            </div>
+          </div>
           <h3 style="color: #1e293b; margin-bottom: 0.5rem;">Trucks & Heavy Vehicles</h3>
           <p style="color: #64748b; font-size: 0.95rem;">A niche community for spotting prime movers, container trucks, and construction vehicles in Tuas and industrial estates.</p>
         </div>
+
         <!-- E-Scooter/Bicycle -->
-        <div style="background: linear-gradient(135deg, #f8fafc, #e2e8f0); border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; text-align: center; transition: transform 0.3s ease, box--shadow 0.3s ease;">
-          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🚴‍♂️</div>
+        <div class="transport-card" style="background: linear-gradient(135deg, #f8fafc, #e2e8f0); border: 1px solid #cbd5e1; border-radius: 12px; padding: 1.5rem; text-align: center;">
+          <div class="carousel-container">
+            <div class="carousel-slide">
+              <img src="images/cycle1.jpg" alt="Bicycle">
+              <img src="images/cycle2.jpg" alt="Bicycle">
+              <img src="images/cycle3.jpg" alt="Bicycle">
+              <img src="images/cycle4.jpg" alt="Bicycle">
+              <img src="images/cycle5.jpg" alt="Bicycle">
+              <img src="images/cycle1.jpg" alt="Bicycle">
+            </div>
+          </div>
           <h3 style="color: #1e293b; margin-bottom: 0.5rem;">E-Scooter & Bicycle</h3>
           <p style="color: #64748b; font-size: 0.95rem;">For students and commuters who use bicycles and PMDs. Share routes, tips, and advocate for better cycling infrastructure and safety.</p>
         </div>
+
       </div>
     </div>
   </main>
