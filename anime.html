@@ -43,6 +43,7 @@
       min-height: 60vh;
       display: flex;
       align-items: center;
+      justify-content: center;
       position: relative;
       overflow: hidden;
     }
@@ -53,7 +54,8 @@
       border-radius: 25px;
       padding: 3rem;
       max-width: 800px;
-      margin: 0 auto;
+      width: 90%;
+      text-align: center;
       animation: fadeInScale 1s ease-out;
       border: 3px solid rgba(255, 182, 193, 0.5);
     }
@@ -395,14 +397,14 @@
           <div style='display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;'>
             <img src="images/me.png" width="40" height="40" style="border-radius: 50%; border: 3px solid #ff69b4;">
             <div>
-              <strong style="color: #ff69b4; font-size: 1.1rem;">AniBot</strong>
-              <div style="font-size: 0.8rem; color: #8a2be2; opacity: 0.8;">Your Anime Sensei</div>
+              <strong style="color: white; font-size: 1.1rem;">AniBot</strong>
+              <div style="font-size: 0.8rem; color: white; opacity: 0.8;">Your Anime Sensei</div>
             </div>
           </div>
-          <div style='font-size: 1.1rem; line-height: 1.6; color: #333;'>
+          <div style='font-size: 1.1rem; line-height: 1.6; color: white;'>
             <span style="font-size: 1.2rem;">🌸 Konnichiwa, fellow otaku!</span><br><br>
             I'm AniBot, and I'm absolutely thrilled to meet you! ✨ Whether you're a seasoned anime veteran or just starting your journey into the wonderful world of Japanese animation, I'm here to help you discover amazing series, connect with the community, and make your anime experience even more magical!<br><br>
-            <strong style="color: #ff69b4;">What can I help you with today?</strong> 🎌
+            <strong style="color: #ffb6c1;">What can I help you with today?</strong> 🎌
           </div>
         </div>
       `;
@@ -414,15 +416,15 @@
 
         // Add user message with anime-themed styling
         messages.innerHTML += `
-          <div class='chat-msg user' style='background: linear-gradient(135deg, rgba(138, 43, 226, 0.15), rgba(255, 20, 147, 0.15)); border-radius: 18px; padding: 1.5rem; margin-bottom: 1rem; border-left: 5px solid #8a2be2; text-align: right;'>
+          <div class='chat-msg user' style='background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(255, 20, 147, 0.2)); border-radius: 18px; padding: 1.5rem; margin-bottom: 1rem; border-left: 5px solid #8a2be2; text-align: right;'>
             <div style='display: flex; align-items: center; gap: 1rem; justify-content: flex-end; margin-bottom: 1rem;'>
               <div style="text-align: right;">
-                <strong style='color: #8a2be2; font-size: 1.1rem;'>You</strong>
-                <div style="font-size: 0.8rem; color: #ff1493; opacity: 0.8;">Otaku Friend</div>
+                <strong style='color: white; font-size: 1.1rem;'>You</strong>
+                <div style="font-size: 0.8rem; color: white; opacity: 0.8;">Otaku Friend</div>
               </div>
               <div style='width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #8a2be2, #ff69b4); display: flex; align-items: center; justify-content: center; font-size: 18px; border: 3px solid #ff69b4;'>🎌</div>
             </div>
-            <div style='font-size: 1.1rem; line-height: 1.6; color: #333; text-align: right;'>${userMsg}</div>
+            <div style='font-size: 1.1rem; line-height: 1.6; color: white; text-align: right;'>${userMsg}</div>
           </div>
         `;
         
@@ -433,17 +435,17 @@
           // Add anime-themed typing indicator
           const typingId = Date.now();
           messages.innerHTML += `
-            <div class='chat-msg bot typing-${typingId}' style='background: linear-gradient(135deg, rgba(255, 105, 180, 0.15), rgba(138, 43, 226, 0.15)); border-radius: 18px; padding: 1.5rem; margin-bottom: 1rem; border-left: 5px solid #ff69b4; opacity: 0.8;'>
+            <div class='chat-msg bot typing-${typingId}' style='background: linear-gradient(135deg, rgba(255, 105, 180, 0.2), rgba(138, 43, 226, 0.2)); border-radius: 18px; padding: 1.5rem; margin-bottom: 1rem; border-left: 5px solid #ff69b4; opacity: 0.8;'>
               <div style='display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;'>
                 <img src="images/me.png" width="40" height="40" style="border-radius: 50%; border: 3px solid #ff69b4;">
                 <div>
-                  <strong style="color: #ff69b4; font-size: 1.1rem;">AniBot</strong>
-                  <div style="font-size: 0.8rem; color: #8a2be2; opacity: 0.8;">Thinking...</div>
+                  <strong style="color: white; font-size: 1.1rem;">AniBot</strong>
+                  <div style="font-size: 0.8rem; color: white; opacity: 0.8;">Thinking...</div>
                 </div>
               </div>
-              <div style='font-size: 1.1rem; line-height: 1.6; color: #666;'>
+              <div style='font-size: 1.1rem; line-height: 1.6; color: white;'>
                 <span style='animation: typing 1.5s infinite;'>🤔 Let me check my anime database...</span> 
-                <span style="color: #ff69b4;">✨📚🎌</span>
+                <span style="color: #ffb6c1;">✨📚🎌</span>
               </div>
             </div>
           `;
@@ -465,11 +467,11 @@
               <div style='display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;'>
                 <img src="images/me.png" width="40" height="40" style="border-radius: 50%; border: 3px solid #ff69b4;">
                 <div>
-                  <strong style="color: #ff69b4; font-size: 1.1rem;">AniBot</strong>
-                  <div style="font-size: 0.8rem; color: #8a2be2; opacity: 0.8;">Your Anime Sensei</div>
+                  <strong style="color: white; font-size: 1.1rem;">AniBot</strong>
+                  <div style="font-size: 0.8rem; color: white; opacity: 0.8;">Your Anime Sensei</div>
                 </div>
               </div>
-              <div style='font-size: 1.1rem; line-height: 1.6; color: #333;'>${renderMarkdown(botMsg)}</div>
+              <div style='font-size: 1.1rem; line-height: 1.6; color: white;'>${renderMarkdown(botMsg)}</div>
             </div>
           `;
           
